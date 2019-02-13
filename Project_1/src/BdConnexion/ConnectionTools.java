@@ -9,7 +9,7 @@ public class ConnectionTools {
 	 * @return
 	 */
 	public static boolean insertConnection(String id, boolean val) {
-		
+		return true;
 		
 	}
 	
