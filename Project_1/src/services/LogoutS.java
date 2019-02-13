@@ -1,10 +1,12 @@
 package services;
-
+import jsonMessage.ServiceTools;
+import bdConnexion.ConnectionTools;
+import bdConnexion.Database;
 import java.sql.Connection;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-
+import java.sql.SQLException;
 import bdConnexion.ConnectionTools;
 import jsonMessage.ServiceTools;
 
@@ -14,11 +16,12 @@ public class LogoutS {
 	 * @param key, duree de la clef de connexion
 	 * @return JSONObject
 	 */
-	public static JSONObject logout(String key)throws JSONException{
+	public static JSONObject logout(String key)throws JSONException, SQLException {
 
 		Connection connection;
+		
 					/*???*/
-		//connection = Database.getMySQLConnection();
+		connection = ConnectionTools.getMySQLConnection();
 		
 		
 		
