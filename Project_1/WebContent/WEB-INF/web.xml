@@ -1,13 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:web="http://xmlns.jcp.org/xml/ns/javaee" 
+xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
 
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:web="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
-  <display-name>TestTomcat</display-name>
   <servlet>
-    <servlet-name>Test</servlet-name>
-    <servlet-class>com.developpez.tomcat.Test</servlet-class>
+    <servlet-name>CreateUser</servlet-name>
+    <servlet-class>CreateUser</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>Login</servlet-name>
+    <servlet-class>Login</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>Logout</servlet-name>
+    <servlet-class>Logout</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>AddComment</servlet-name>
+    <servlet-class>AddComment</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>AddFriend</servlet-name>
+    <servlet-class>AddFriend</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>RemoveFriend</servlet-name>
+    <servlet-class>RemoveFriend</servlet-class>
+  </servlet>  
+  
+  
+  
   <servlet-mapping>
-    <servlet-name>Test</servlet-name>
-    <url-pattern>/Test</url-pattern>
+    <servlet-name>CreateUser</servlet-name>
+    <url-pattern>/Servlets/CreateUser</url-pattern>
   </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>Login</servlet-name>
+    <url-pattern>/Servlets/Login</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>Logout</servlet-name>
+    <url-pattern>/Servlets/Logout</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>AddComment</servlet-name>
+    <url-pattern>/Servlets/AddComment</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>AddFriend</servlet-name>
+    <url-pattern>/Servlets/AddFriend</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>RemoveFriend</servlet-name>
+    <url-pattern>/Servlets/RemoveFriend</url-pattern>
+  </servlet-mapping>
+  
+  
 </web-app>
