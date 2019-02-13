@@ -1,5 +1,7 @@
 package services;
 
+import java.sql.SQLException;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.JSONException;
@@ -23,8 +25,12 @@ public class CreateUserS {
 		if(login == null || password == null) {
 			return ServiceTools.serviceRefused("Wrong Argument", 1);
 		}
-		if (UserTools.checkUser(login)) {
-			return ServiceTools.serviceRefused("User name already exist", 1000);
+		try {
+			if (UserTools.checkUser(login)) {
+				return ServiceTools.serviceRefused("User name already exist", 1000);
+			}
+		}catch(SQLException e) {
+			e.getMessage();
 		}
 		if (!UserTools.insertUser(login, password)) {
 			return ServiceTools.serviceRefused("Could not insert user", 1000);		
