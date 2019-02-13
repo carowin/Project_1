@@ -18,7 +18,9 @@ public class AddCommentS {
 		if(key == null || text == null) {
 			return ServiceTools.serviceRefused("Wrong Parameter", -1);
 		}
+		JSONObject json=new JSONObject();
 		
+		return json;
 	}
 	
 }

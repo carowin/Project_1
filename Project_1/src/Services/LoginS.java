@@ -26,23 +26,24 @@ public class LoginS {
 				return ServiceTools.serviceRefused("Incorrect Password"+login, 2);
 			}
 			int user_id = UserTools.getUserId(login);
-			//String key = ConnectionTools.generateKey();
-			String key = ConnectionTools.insertConnection(user_id, false);
-			JSONObject json = new JSONObject();
-			/*json.put("Succes", "OK");
-			json.put("Login", login);
-			json.put("User_Id", user_id);
-			json.put("Key", key);*/
-			
-			json.put("Status", "OK");
-			json.put("key", key);
-			return json;
+				//String key = ConnectionTools.generateKey();
+			boolean c = ConnectionTools.insertConnection(user_id, false);
+			if(c) {
+				String key = ConnectionTools.generateKey();
+				JSONObject json = new JSONObject();
+				json.put("Succes", "OK");
+				json.put("Login", login);
+				json.put("User_Id", user_id);
+				json.put("Key", key);
+				return json;
+			}
 		}catch(JSONException e) {
 			return ServiceTools.serviceRefused("Problème avec JSON", 100000);
 		}
 		catch (Exception e) {
 			return ServiceTools.serviceRefused("Exception Problem", 10000);
 		}
+		return null;
 	}
 }
 	

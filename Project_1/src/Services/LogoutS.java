@@ -17,7 +17,8 @@ public class LogoutS {
 	public static JSONObject logout(String key)throws JSONException{
 
 		Connection connection;
-		//c = Database.getMySQLConnection();
+					/*???*/
+		//connection = Database.getMySQLConnection();
 		
 		
 		
@@ -26,7 +27,7 @@ public class LogoutS {
 			return ServiceTools.serviceRefused("Wrong Parameter",-1);
 		}
 		//Verification connection
-		if(!ConnectionTools.isConnected(key, connection)){
+		if(!ConnectionTools.isConnected((new Integer(key)), connection)){
 			return ServiceTools.serviceRefused("No Connection", -1);
 		}
 		

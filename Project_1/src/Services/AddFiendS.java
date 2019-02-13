@@ -1,5 +1,8 @@
 package Services;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import JsonMessage.ServiceTools;
 
 public class AddFiendS {
@@ -9,11 +12,15 @@ public class AddFiendS {
 	 * @param key
 	 * @param id_friend, l'id de l'ami à ajouter
 	 * @return
+	 * @throws JSONException 
 	 */
-	public static JSONObject addFriend(String key, String id_friend) {
+	public static JSONObject addFriend(String key, String id_friend) throws JSONException {
 		if (key == null || id_friend == null) {
 			return ServiceTools.serviceRefused("Wrong Parameter", -1);
 		}
+		
+		JSONObject json=new JSONObject();
+		return json;
 		
 	}
 }

@@ -11,5 +11,7 @@ public class RemoveFriendS {
 		if(id_friend == null || key == null) {
 			return ServiceTools.serviceRefused("Wrong Parameter", -1);
 		}
+		JSONObject o = new JSONObject();
+		return null;/*finir*/
 	}
 }

@@ -54,6 +54,7 @@ public class UserTools {
 	 * @return l'id de l'utilisateur
 	 */
 	public static int getUserId(String login) {
+		return 1;
 		
 	}
 }
