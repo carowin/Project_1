@@ -1,4 +1,4 @@
-package Servlets;
+package servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -11,16 +11,16 @@ import javax.servlet.http.HttpServletResponse;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import Services.LoginS;
+import services.CreateUserS;
 
 
 /**
- * Servlet implementation class Login
+ * Servlet implementation class CreateUser
  */
-public class Login extends HttpServlet {
+public class CreateUser extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    public Login() {
+    public CreateUser() {
     	super();
     }
 
@@ -34,13 +34,11 @@ public class Login extends HttpServlet {
 		PrintWriter out = response.getWriter ();
 		
 		try {
-			json = LoginS.login(login, password);
+			json = CreateUserS.createUser(login, password);
 			out.println(json.toString());
 		} catch (JSONException e) {
 			out.println(e.getMessage());
 		}
-		
-		
 	}
 
 }

@@ -1,4 +1,4 @@
-package Servlets;
+package servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -11,36 +11,36 @@ import javax.servlet.http.HttpServletResponse;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import services.LoginS;
 
-import Services.LogoutS;
 
 /**
- * Servlet implementation class Logout
+ * Servlet implementation class Login
  */
-public class Logout extends HttpServlet {
+public class Login extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    public Logout() {
-        super();
+    public Login() {
+    	super();
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		JSONObject json = null;
 		
-		String key = request.getParameter("key");
-
+		String login = request.getParameter("login");
+		String password = request.getParameter("password");
 		
 	 	response.setContentType( " text / plain " );
 		PrintWriter out = response.getWriter ();
 		
 		try {
-			json = LogoutS.logout(key);
+			json = LoginS.login(login, password);
 			out.println(json.toString());
 		} catch (JSONException e) {
 			out.println(e.getMessage());
 		}
 		
+		
 	}
-
 
 }

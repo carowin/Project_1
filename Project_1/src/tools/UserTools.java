@@ -1,4 +1,11 @@
-package Tools;
+package tools;
+
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+import bdConnexion.ConnectionTools;
 
 public class UserTools {
 
@@ -7,13 +14,23 @@ public class UserTools {
 	 * base de donnée.
 	 * @param login, le login de l'utilisateur
 	 * @return true, si l'utilisateur existe, false sinon
+	 * @throws SQLException 
 	 * */
-	public static boolean checkUser(String login) {
+	public static boolean checkUser(String login) throws SQLException {
 		/* Connexion dans la base
 		 * Parcours de la base pour chercher existance du login
 		 * Valeur de retour
 		 * Si ok return true sinon false
 		 */
+		Connection c = ConnectionTools.getMySQLConnection();
+		String query = "SELECT user_login FROM user WHERE user_login = "+login+";";
+		Statement st = c.createStatement();
+		ResultSet rs = st.executeQuery(query);	
+		
+		String user_login =rs.getString("user_login");
+		if(user_login != null) {
+			return true;
+		}
 		return false;
 	
 	}
@@ -31,6 +48,7 @@ public class UserTools {
 		 * Check valeur de retour
 		 * si ok return true sinon false 
 		 */
+		
 		return false;
 		
 	}

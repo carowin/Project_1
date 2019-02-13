@@ -1,10 +1,11 @@
-package Services;
+package services;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-import JsonMessage.ServiceTools;
-import BdConnexion.ConnectionTools;
-import Tools.UserTools;
+
+import bdConnexion.ConnectionTools;
+import jsonMessage.ServiceTools;
+import tools.UserTools;
 
 public class LoginS {
 

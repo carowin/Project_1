@@ -1,9 +1,10 @@
-package Services;
+package services;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-import JsonMessage.ServiceTools;
-import Tools.UserTools;
+
+import jsonMessage.ServiceTools;
+import tools.UserTools;
 
 public class CreateUserS {
 
@@ -28,6 +29,9 @@ public class CreateUserS {
 		if (!UserTools.insertUser(login, password)) {
 			return ServiceTools.serviceRefused("Could not insert user", 1000);		
 			}
+		//INSERT USER
+		
+		
 		return new JSONObject();
 		}
 	

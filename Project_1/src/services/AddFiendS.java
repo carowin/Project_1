@@ -1,9 +1,9 @@
-package Services;
+package services;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import JsonMessage.ServiceTools;
+import jsonMessage.ServiceTools;
 
 public class AddFiendS {
 	/** 

@@ -1,4 +1,4 @@
-package Servlets;
+package servlets;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -8,13 +8,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class AddFriend
+ * Servlet implementation class AddComment
  */
-@WebServlet("/AddFriend")
-public class AddFriend extends HttpServlet {
+@WebServlet("/AddComment")
+public class AddComment extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    public AddFriend() {
+    public AddComment() {
         super();
     }
 
@@ -22,5 +22,4 @@ public class AddFriend extends HttpServlet {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
-
 }

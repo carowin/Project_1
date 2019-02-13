@@ -1,4 +1,4 @@
-package JsonMessage;
+package jsonMessage;
 
 import org.json.JSONException;
 import org.json.JSONObject;

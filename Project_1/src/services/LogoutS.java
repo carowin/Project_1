@@ -1,12 +1,12 @@
-package Services;
+package services;
 
 import java.sql.Connection;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import BdConnexion.ConnectionTools;
-import JsonMessage.ServiceTools;
+import bdConnexion.ConnectionTools;
+import jsonMessage.ServiceTools;
 
 public class LogoutS {
 	/**

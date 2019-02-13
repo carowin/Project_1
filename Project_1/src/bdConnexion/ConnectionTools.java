@@ -1,8 +1,10 @@
-package BdConnexion;
+package bdConnexion;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.UUID;
+
 import com.mysql.jdbc.Driver;
 
 public class ConnectionTools {
@@ -29,7 +31,7 @@ public class ConnectionTools {
 	 * @return la valeur de la clef
 	 */
 	public static String generateKey() {
-		String key = new String();
+		String key = UUID.randomUUID().toString();
 		return key;
 	}
 	
@@ -37,5 +39,25 @@ public class ConnectionTools {
 		/*finir*/
 		return false;
 	}
+	
+	/**
+	 * Methode permettant de renvoyer une nouvelle connexion à une base de donnée
+	 * @return
+	 */
+	public static Connection getMySQLConnection() throws SQLException {
+		if (DBStatic.mysql_pooling==false) {
+			return(DriverManager.getConnection("jdbc:mysql://" + DBStatic.mysql_host + "/" +
+		DBStatic.mysql_bd, DBStatic.mysql_user, DBStatic.mysql_password));
+		}else {
+			Database database = null;
+			if (database==null) {
+				database=new Database("jdbc/db");
+			}
+			return(database.getConnection());
+		}
+	}
+	
+	
+		
 	
 }
