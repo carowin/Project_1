@@ -2,7 +2,9 @@ package bdConnexion;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.UUID;
 
 import com.mysql.jdbc.Driver;
@@ -34,9 +36,28 @@ public class ConnectionTools {
 		String key = UUID.randomUUID().toString();
 		return key;
 	}
-	
-	public static boolean isConnected(int key, Connection c) {
-		/*finir*/
+	/*Verifie si un utilisateur est connecte 
+	 * et on suppose que 'key' et 'c' sont deja alloue ???*/
+	public static boolean isConnected(String key, Connection c) {
+		if ((c != null)&&(key != null)) {
+			String query =  "SELECT *"
+							+" FROM session "
+							+" WHERE session_root=true"
+							+" AND session_key='"+key+"';";
+			Statement st;
+			ResultSet rs;
+			try {
+				st = c.createStatement();
+				rs = st.executeQuery(query);
+				if(rs.first()) {
+					rs.close();
+					return true;
+				}
+				rs.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
 		return false;
 	}
 	

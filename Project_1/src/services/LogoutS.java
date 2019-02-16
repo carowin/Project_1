@@ -30,7 +30,7 @@ public class LogoutS {
 			return ServiceTools.serviceRefused("Wrong Parameter",-1);
 		}
 		//Verification connection
-		if(!ConnectionTools.isConnected((new Integer(key)), connection)){
+		if(!ConnectionTools.isConnected(key, connection)){
 			return ServiceTools.serviceRefused("No Connection", -1);
 		}
 		
