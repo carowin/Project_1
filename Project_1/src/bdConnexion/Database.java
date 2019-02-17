@@ -6,6 +6,15 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException; 
 import javax.sql.DataSource;
 
+
+/**
+ * La BDD:
+ * user(user_id, user_login, user_password) 
+ * session(session_key, user_session*, session_root, session_start)
+ * follow(id_user1*, id_user2*, follow_date)
+ */
+
+
 public class Database {
 	private DataSource dataSource;
 	
