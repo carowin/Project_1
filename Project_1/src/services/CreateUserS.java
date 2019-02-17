@@ -1,11 +1,13 @@
 package services;
 
+import java.sql.Connection;
 import java.sql.SQLException;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.JSONException;
 import jsonMessage.ServiceTools;
+import tools.ConnectionTools;
 import tools.UserTools;
 
 public class CreateUserS {
@@ -16,29 +18,29 @@ public class CreateUserS {
 	 * @param login, login choisis par l'utilisateur
 	 * @param password, mot de passe choisis
 	 * @return JONObject 
+	 * @throws SQLException 
 	 */
 	
 	/* POUR + TARD:
 	 * ajouter les argument nom, prenom, mail ...
 	 * */
-	public static JSONObject createUser(String login, String password) throws JSONException{
+	public static JSONObject createUser(String login, String password) throws JSONException, SQLException{
+		
+		Connection connection = ConnectionTools.getMySQLConnection();
+		JSONObject json = new JSONObject();
 		if(login == null || password == null) {
 			return ServiceTools.serviceRefused("Wrong Argument", 1);
 		}
-		try {
-			if (UserTools.checkUser(login)) {
-				return ServiceTools.serviceRefused("User name already exist", 1000);
-			}
-		}catch(SQLException e) {
-			e.getMessage();
+		if (UserTools.checkUser(login, connection)) {
+			return ServiceTools.serviceRefused("User name already exist", 1000);
 		}
-		if (!UserTools.insertUser(login, password)) {
+		if (!UserTools.insertUser(login, password, connection)) {
 			return ServiceTools.serviceRefused("Could not insert user", 1000);		
-			}
-		//INSERT USER
+		}
+		connection.close();
+		json.put("Status", "succes");
 		
-		
-		return new JSONObject();
+		return json;
 		}
 	
 	
