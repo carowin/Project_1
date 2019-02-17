@@ -1,6 +1,7 @@
 package bdConnection;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.SQLException; 
 import javax.naming.InitialContext; 
 import javax.naming.NamingException; 
@@ -29,6 +30,20 @@ public class Database {
 		
 	public Connection getConnection() throws SQLException {
 		return dataSource.getConnection();
+	}
+	
+	public static Connection getMySQLConnection() throws SQLException { 
+		if (DBStatic.mysql_pooling==false) { 
+			return(DriverManager.getConnection("jdbc:mysql://" + DBStatic.mysql_host + "/" + 
+					DBStatic.mysql_bd, DBStatic.mysql_user, DBStatic.mysql_password));
+		} 
+		else { 
+			Database database = null;
+			if (database==null) { 
+				database=new Database("jdbc/db"); 
+			}	 
+			return(database.getConnection()); 
+		}
 	}
 }
 

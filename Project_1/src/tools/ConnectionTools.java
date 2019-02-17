@@ -1,4 +1,4 @@
-package bdConnexion;
+package tools;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -9,6 +9,9 @@ import java.util.UUID;
 
 import com.mysql.jdbc.Driver;
 
+import bdConnection.DBStatic;
+import bdConnection.Database;
+
 public class ConnectionTools {
 	
 	/**
@@ -17,6 +20,7 @@ public class ConnectionTools {
 	 * @param val
 	 * @return
 	 */
+	// A REVOIR: les parametres
 	public static boolean insertConnection(int id, boolean val) {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
@@ -36,6 +40,7 @@ public class ConnectionTools {
 		String key = UUID.randomUUID().toString();
 		return key;
 	}
+	
 	/*Verifie si un utilisateur est connecte 
 	 * et on suppose que 'key' et 'c' sont deja alloue ???*/
 	public static boolean isConnected(String key, Connection c) {
@@ -59,26 +64,5 @@ public class ConnectionTools {
 			}
 		}
 		return false;
-	}
-	
-	/**
-	 * Methode permettant de renvoyer une nouvelle connexion à une base de donnée
-	 * @return
-	 */
-	public static Connection getMySQLConnection() throws SQLException {
-		if (DBStatic.mysql_pooling==false) {
-			return(DriverManager.getConnection("jdbc:mysql://" + DBStatic.mysql_host + "/" +
-		DBStatic.mysql_bd, DBStatic.mysql_user, DBStatic.mysql_password));
-		}else {
-			Database database = null;
-			if (database==null) {
-				database=new Database("jdbc/db");
-			}
-			return(database.getConnection());
-		}
-	}
-	
-	
-		
-	
+	}	
 }
