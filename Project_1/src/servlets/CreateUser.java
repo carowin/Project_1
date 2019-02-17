@@ -2,6 +2,7 @@ package servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -36,8 +37,11 @@ public class CreateUser extends HttpServlet {
 		try {
 			json = CreateUserS.createUser(login, password);
 			out.println(json.toString());
+			
 		} catch (JSONException e) {
 			out.println(e.getMessage());
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
 	}
 

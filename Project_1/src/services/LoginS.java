@@ -3,6 +3,8 @@ package services;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import bdConnection.Database;
+
 import java.sql.Connection;
 import java.sql.SQLException;
 
@@ -22,7 +24,7 @@ public class LoginS {
 	 */
 	public static JSONObject login(String login, String password) throws JSONException, SQLException{
 		
-		Connection connection = ConnectionTools.getMySQLConnection();
+		Connection connection = Database.getMySQLConnection();
 		JSONObject json = new JSONObject();
 		if(login==null || password==null) {
 			return ServiceTools.serviceRefused("Wrong Argument", -1);

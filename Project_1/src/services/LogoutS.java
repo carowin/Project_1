@@ -24,7 +24,7 @@ public class LogoutS {
 		Connection connection;
 		
 					/*???*/
-		connection = ConnectionTools.getMySQLConnection();
+		connection = Database.getMySQLConnection();
 		
 		
 		

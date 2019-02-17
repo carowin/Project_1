@@ -5,6 +5,9 @@ import java.sql.SQLException;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import bdConnection.Database;
+
 import org.json.JSONException;
 import jsonMessage.ServiceTools;
 import tools.ConnectionTools;
@@ -26,7 +29,7 @@ public class CreateUserS {
 	 * */
 	public static JSONObject createUser(String login, String password) throws JSONException, SQLException{
 		
-		Connection connection = ConnectionTools.getMySQLConnection();
+		Connection connection = Database.getMySQLConnection();
 		JSONObject json = new JSONObject();
 		if(login == null || password == null) {
 			return ServiceTools.serviceRefused("Wrong Argument", 1);
