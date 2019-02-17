@@ -106,7 +106,7 @@ public class UserTools {
 		}else {
 			user_id = -1;
 		}
-		st.close();
+		st.close(); 
 		result.close();
 		
 		return user_id;
