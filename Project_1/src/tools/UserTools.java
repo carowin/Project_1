@@ -101,7 +101,6 @@ public class UserTools {
 		int user_id;
 		
 		if(result.next()) {
-			//on recupere l'id de l'user
 			user_id = result.getInt("user_id");
 		}else {
 			user_id = -1;
@@ -128,7 +127,6 @@ public class UserTools {
 		String user_login;
 		
 		if(result.next()) {
-			//on recupere l'id de l'user
 			user_login = result.getString("user_login");
 		}else {
 			user_login = "Error";
@@ -137,6 +135,29 @@ public class UserTools {
 		result.close();
 		
 		return user_login;
+	}
+	/**
+	 * Retourne la cle d'un utilisateur, si l'id n'existe pas alors retourne -1
+	 * @param id, id de l'utilisateur
+	 * @param c, une connexion
+	 * @return la cle d'un utilisateur
+	 */
+	public static int getUserKey(int id, Connection c) throws SQLException {
+		
+		String query = "SELECT session_key FROM session WHERE user_session ="+id+";";
+		Statement st = c.createStatement();
+		ResultSet result = st.executeQuery(query);
+		int key;
+		
+		if(result.next()) {
+			key = result.getInt("session_key");
+		}else {
+			key = -1;
+		}
+		st.close();
+		result.close();
+		
+		return key;
 	}
 }
 
