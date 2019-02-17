@@ -1,6 +1,7 @@
 package services;
 import jsonMessage.ServiceTools;
 import tools.ConnectionTools;
+import tools.UserTools;
 
 import java.sql.Connection;
 
@@ -22,12 +23,8 @@ public class LogoutS {
 	public static JSONObject logout(String key)throws JSONException, SQLException {
 
 		Connection connection;
-		
-					/*???*/
 		connection = Database.getMySQLConnection();
-		
-		
-		
+
 		//verification que la cle ne soit pas nulle(pas d'autorisation de connexion)
 		if(key==null){
 			return ServiceTools.serviceRefused("Wrong Parameter",-1);
@@ -36,8 +33,9 @@ public class LogoutS {
 		if(!ConnectionTools.isConnected(key, connection)){
 			return ServiceTools.serviceRefused("No Connection", -1);
 		}
+		// A AJOUTER: seviceRefused en cas de non reussite et boucle if/else
+		ConnectionTools.removeConnection(key, connection);
 		
-		//ConnectionTools.removeConnection(key, connection);
 		return ServiceTools.serviceAccepted();
 	}
 	

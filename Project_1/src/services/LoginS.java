@@ -38,7 +38,8 @@ public class LoginS {
 			return ServiceTools.serviceRefused("Incorrect Password"+login, 2);
 		}
 		int user_id = UserTools.getUserId(login, connection);
-		String key = ConnectionTools.generateKey();
+		// A REVOIR, il faut plutot recuperer la cle de l'utilisateur et non genere une cle
+		String key = ConnectionTools.generateKey(); 
 		ConnectionTools.insertConnection(user_id, key, connection);
 
 		json.put("Succes", "OK");

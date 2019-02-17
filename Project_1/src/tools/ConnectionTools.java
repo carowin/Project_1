@@ -15,11 +15,48 @@ import bdConnection.Database;
 public class ConnectionTools {
 	
 	/**
+	 * Géneration d'une clef de 32 caractères
+	 * @return la valeur de la clef
+	 */
+	public static String generateKey() {
+		String key = UUID.randomUUID().toString();
+		return key;
+	}
+	
+	
+	/**
+	 * Verifie si un utilisateur est connecte
+	 * @param key, clé de l'utilisateur
+	 * @param c, connexion 
+	 * @return: true si l'utilisateur est connecté, false sinon
+	 */
+	public static boolean isConnected(String key, Connection c) throws SQLException {
+		String query =  "SELECT *"
+						+" FROM session "
+						+" WHERE session_root=true"
+						+" AND session_key='"+key+"';";
+
+			Statement st = c.createStatement();
+			ResultSet result = st.executeQuery(query);
+			boolean connected;
+			
+			if(result.next()) {
+				connected = true;
+			}else {
+				connected = false;
+			}
+			result.close();
+
+		return connected;
+	}
+	
+	
+	/**
 	 * Insertion dans la table session de la connexion d'un user
 	 * @param id, id de l'utilisateur
 	 * @param key, la clé de l'utilisateur
-	 * @param c, connection
-	 * @return
+	 * @param c, connexion
+	 * @return true si insertion reussie, false sinon
 	 */
 	public static boolean insertConnection(int id, String key, Connection c) throws SQLException {
 		/*try {
@@ -41,40 +78,32 @@ public class ConnectionTools {
 			insert_right = false;
 		}
 		st.close();
+		
 		return insert_right;
 	}
 	
-	/**
-	 * Géneration d'une clef de 32 caractères
-	 * @return la valeur de la clef
-	 */
-	public static String generateKey() {
-		String key = UUID.randomUUID().toString();
-		return key;
-	}
 	
-	/*Verifie si un utilisateur est connecte 
-	 * et on suppose que 'key' et 'c' sont deja alloue ???*/
-	public static boolean isConnected(String key, Connection c) {
-		if ((c != null)&&(key != null)) {
-			String query =  "SELECT *"
-							+" FROM session "
-							+" WHERE session_root=true"
-							+" AND session_key='"+key+"';";
-			Statement st;
-			ResultSet rs;
-			try {
-				st = c.createStatement();
-				rs = st.executeQuery(query);
-				if(rs.first()) {
-					rs.close();
-					return true;
-				}
-				rs.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
+	/**
+	 * Retire la connexion d'un utilisateur de la table session
+	 * @param key, cle de l'utilisateur
+	 * @param c, connexion
+	 * @return true en cas de succes false sinon
+	 * @throws SQLException 
+	 */
+	public static boolean removeConnection(String key, Connection c) throws SQLException {
+		String update = "DELETE FROM session where session_key ="+key +";";
+		Statement st = c.createStatement();
+		int result = st.executeUpdate(update);
+		boolean delete_right;
+		
+		if (result == 1){
+			delete_right = true;
+		}else{
+			delete_right = false;
 		}
-		return false;
-	}	
+		st.close();
+		
+		return delete_right;
+		
+	}
 }
