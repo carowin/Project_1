@@ -39,7 +39,7 @@ public class LoginS {
 		}
 		int user_id = UserTools.getUserId(login, connection);
 		String key = ConnectionTools.generateKey();
-		ConnectionTools.insertConnection(user_id, false);
+		ConnectionTools.insertConnection(user_id, key, connection);
 
 		json.put("Succes", "OK");
 		json.put("Login", login);
