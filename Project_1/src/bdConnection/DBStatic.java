@@ -1,4 +1,4 @@
-package bdConnexion;
+package bdConnection;
 
 public class DBStatic {
 
