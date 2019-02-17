@@ -5,33 +5,35 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import bdConnexion.ConnectionTools;
-
 public class UserTools {
 
+	// REVOIR l'initialisation de id, peut etre initialisé par rapport au nombre d'elem dans la bdd
+	public static int id = 1; //Variable globale pour l'id d'un utilisateur
+	
+	
 	/** 
 	 * Methode permettant de verifier si un utilisateur est dans la
 	 * base de donnée.
 	 * @param login, le login de l'utilisateur
+	 * @param c, une connexion
 	 * @return true, si l'utilisateur existe, false sinon
-	 * @throws SQLException 
 	 * */
-	public static boolean checkUser(String login) throws SQLException {
-		/* Connexion dans la base
-		 * Parcours de la base pour chercher existance du login
-		 * Valeur de retour
-		 * Si ok return true sinon false
-		 */
-		Connection c = ConnectionTools.getMySQLConnection();
+	public static boolean checkUser(String login, Connection c) throws SQLException {
+
 		String query = "SELECT user_login FROM user WHERE user_login = "+login+";";
 		Statement st = c.createStatement();
-		ResultSet rs = st.executeQuery(query);	
+		ResultSet result = st.executeQuery(query);
+		boolean exist;
 		
-		String user_login =rs.getString("user_login");
-		if(user_login != null) {
-			return true;
+		if(result.next()) {
+			exist = true;
+		}else {
+			exist = false;
 		}
-		return false;
+		st.close();
+		result.close();
+		
+		return exist;
 	
 	}
 	
@@ -40,40 +42,101 @@ public class UserTools {
 	 * Verification dans la base de donnée des informations.
 	 * @param login, le login de l'utilisateur
 	 * @param password, mot de passe de l'utilisateur
+	 * @param c, une connexion
 	 * @return true si tout est correct, false sinon
 	 * */
-	public static boolean checkPassword(String login, String password) {
-		/* Connexion dans la base 
-		 * Verification du login et du password
-		 * Check valeur de retour
-		 * si ok return true sinon false 
-		 */
+	public static boolean checkPassword(String login, String password, Connection c) throws SQLException {
 		
-		return false;
+		String query = "SELECT user_login FROM user WHERE user_login = "+login+" AND user_password = "+password+";";
+		Statement st = c.createStatement();
+		ResultSet result = st.executeQuery(query);
+		boolean exist;
 		
+		if(result.next()) {
+			exist = true;
+		}else {
+			exist = false;
+		}
+		st.close();
+		result.close();
+		
+		return exist;
 	}
 	
 	/** 
 	 * Methode d'insertion d'un utilisateur dans la base de donnee.
 	 * @param login, le login de l'utilisateur
 	 * @param password, son mot de passe
+	 * @param c, une connexion
 	 * @return true si insertion réussie, false sinon.
 	 */
-	public static boolean insertUser(String login, String password){
-		/* Connexion dans la base, verification avec checkUser si pas ok message erreur et return false
-		 * Sinon maj de la bdd et return true 
-		 * */
-		return false;
-	
+	public static boolean insertUser(String login, String password, Connection c) throws SQLException{
+
+		String update = "INSERT INTO user(user_id, user_login, user_password) values("+id+",'"+login+"','"+password+"');";
+		id ++; //incrementation de l'id pour le prochain utilisateur
+		Statement st = c.createStatement();
+		int result = st.executeUpdate(update);
+		boolean exist;
+		
+		if(result == 1) {
+			exist = true;
+		}else {
+			exist = false;
+		}
+		st.close();
+		
+		return exist;
 	}
 	
 	/**
+	 * Retourne l'id d'un utilisateur à partir de son login
 	 * @param login de l'utilisateur
-	 * @return l'id de l'utilisateur
+	 * @param c, une connexion
+	 * @return l'id de l'utilisateur s'il existe, sinon retourne -1 en cas d'erreur
 	 */
-	public static int getUserId(String login) {
-		return 1;
+	public static int getUserId(String login, Connection c) throws SQLException {
+		String query = "SELECT user_login FROM user WHERE user_login = "+login+";";
+		Statement st = c.createStatement();
+		ResultSet result = st.executeQuery(query);
+		int user_id;
 		
+		if(result.next()) {
+			//on recupere l'id de l'user
+			user_id = result.getInt("user_id");
+		}else {
+			user_id = -1;
+		}
+		st.close();
+		result.close();
+		
+		return user_id;
+		
+	}
+	
+	/**
+	 * Retourne le login d'un utilisateur à partir de son id, s'il n'existe pas retourne "Error"
+	 * @param login de l'utilisateur
+	 * @param c, une connexion
+	 * @return l'id de l'utilisateur, "Error" en cas de problème
+	 * @throws SQLException 
+	 */
+	public static String getUserLogin(int id, Connection c) throws SQLException {
+		
+		String query = "SELECT user_login FROM user WHERE user_id = "+id+";";
+		Statement st = c.createStatement();
+		ResultSet result = st.executeQuery(query);
+		String user_login;
+		
+		if(result.next()) {
+			//on recupere l'id de l'user
+			user_login = result.getString("user_login");
+		}else {
+			user_login = "Error";
+		}
+		st.close();
+		result.close();
+		
+		return user_login;
 	}
 }
 
