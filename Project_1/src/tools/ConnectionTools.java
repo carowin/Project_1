@@ -15,21 +15,33 @@ import bdConnection.Database;
 public class ConnectionTools {
 	
 	/**
-	 * 
-	 * @param id
-	 * @param val
+	 * Insertion dans la table session de la connexion d'un user
+	 * @param id, id de l'utilisateur
+	 * @param key, la clé de l'utilisateur
+	 * @param c, connection
 	 * @return
 	 */
-	// A REVOIR: les parametres
-	public static boolean insertConnection(int id, boolean val) {
-		try {
+	public static boolean insertConnection(int id, String key, Connection c) throws SQLException {
+		/*try {
 			Class.forName("com.mysql.jdbc.Driver");
 		}catch(ClassNotFoundException e) {e.getMessage();}
 		try {
-			/*FINIR*/
 			Connection connection = DriverManager.getConnection("jdbc.mysql://localhost:3306/mysql");
 		}catch(SQLException e) {e.getMessage();}
-		return false;	
+		return false;*/	
+		
+		String update = "INSERT INTO session VALUES("+ key +","+ id +", true, true);";
+		Statement st = c.createStatement();
+		int result = st.executeUpdate(update);
+		boolean insert_right;
+
+		if (result == 1){
+			insert_right = true;
+		}else{
+			insert_right = false;
+		}
+		st.close();
+		return insert_right;
 	}
 	
 	/**
