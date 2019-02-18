@@ -20,7 +20,7 @@ public class UserTools {
 	 * */
 	public static boolean checkUser(String login, Connection c) throws SQLException {
 
-		String query = "SELECT user_login FROM user WHERE user_login = "+login+";";
+		String query = "SELECT user_login FROM user WHERE user_login = '"+login+"';";
 		Statement st = c.createStatement();
 		ResultSet result = st.executeQuery(query);
 		boolean exist;
@@ -47,7 +47,7 @@ public class UserTools {
 	 * */
 	public static boolean checkPassword(String login, String password, Connection c) throws SQLException {
 		
-		String query = "SELECT user_login FROM user WHERE user_login = "+login+" AND user_password = "+password+";";
+		String query = "SELECT user_login FROM user WHERE user_login = '"+login+"' AND user_password = '"+password+"';";
 		Statement st = c.createStatement();
 		ResultSet result = st.executeQuery(query);
 		boolean exist;
@@ -95,7 +95,7 @@ public class UserTools {
 	 * @return l'id de l'utilisateur s'il existe, sinon retourne -1 en cas d'erreur
 	 */
 	public static int getUserId(String login, Connection c) throws SQLException {
-		String query = "SELECT user_login FROM user WHERE user_login = "+login+";";
+		String query = "SELECT user_login FROM user WHERE user_login = '"+login+"';";
 		Statement st = c.createStatement();
 		ResultSet result = st.executeQuery(query);
 		int user_id;
