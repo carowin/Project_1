@@ -10,9 +10,14 @@ import javax.sql.DataSource;
 
 /**
  * La BDD:
- * user(user_id, user_login, user_password) 
- * session(session_key, user_session*, session_root, session_start)
- * follow(id_user1*, id_user2*, follow_date)
+ * 		user(user_id, user_login, user_password) 
+ * 		session(session_key, user_session*, session_root, session_start)
+ * 		follow(id_user1*, id_user2*, follow_date)
+ * 
+ * A CHANGER (POSSIBILITÉ)
+ * 		user(user_id, user_login, user_password)  //ajouter mail, nom, prenom
+ * 		session(session_key, user_id*, session_root, session_start)
+ * 		follow(user_login1*, user_login2*, follow_date) 
  */
 
 
