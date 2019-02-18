@@ -61,6 +61,7 @@ public class FriendsTools {
 			return delete_right;
 		}
 		
+		//public static boolean isFriend(String me, String friend, Connection c){}
 		
 		//public static int nbFollower(String id, Connection c){}
 

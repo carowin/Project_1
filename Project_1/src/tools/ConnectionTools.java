@@ -23,6 +23,8 @@ public class ConnectionTools {
 		return key;
 	}
 	
+	//public static String getKey(int id_user, Connection c);
+	
 	
 	/**
 	 * Verifie si un utilisateur est connecte
