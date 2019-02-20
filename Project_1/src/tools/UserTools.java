@@ -73,12 +73,12 @@ public class UserTools {
 	public static boolean insertUser(String login, String password, Connection c) throws SQLException{
 
 		String update = "INSERT INTO user(user_id, user_login, user_password) values("+id+",'"+login+"','"+password+"');";
-		id ++; //incrementation de l'id pour le prochain utilisateur
 		Statement st = c.createStatement();
 		int result = st.executeUpdate(update);
 		boolean exist;
 		
 		if(result == 1) {
+			id ++; //incrementation de l'id pour le prochain utilisateur
 			exist = true;
 		}else {
 			exist = false;
@@ -136,6 +136,7 @@ public class UserTools {
 		
 		return user_login;
 	}
+	
 	/**
 	 * Retourne la cle d'un utilisateur, si l'id n'existe pas alors retourne -1
 	 * @param id, id de l'utilisateur

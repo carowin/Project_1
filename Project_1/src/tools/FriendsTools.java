@@ -1,11 +1,12 @@
 package tools;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-import com.mysql.jdbc.Connection;
+import java.sql.Connection;
 
 public class FriendsTools {
 
@@ -44,7 +45,6 @@ public class FriendsTools {
 		 * @return true en cas de reussite, false sinon
 		 */
 		public static boolean unfollowAccount(String me, String friend, Connection c) throws SQLException{
-		
 			String update = "DELETE FROM follow WHERE"
 					+ " id_user1 ='"+ me +"' AND id_user2 ='"+ friend +"';";
 			Statement st = c.createStatement();
@@ -61,7 +61,29 @@ public class FriendsTools {
 			return delete_right;
 		}
 		
-		//public static boolean isFriend(String me, String friend, Connection c){}
+		/**
+		 * Methode permettant de déterminer si 2 personnes sont amis. Retourne vrai si c'est la cas, false sinon
+		 * @param me, un utilisateur
+		 * @param friend, un autre utilisateur
+		 * @param c, une connexion
+		 * @return true si les 2 sont amis, false sinon
+		 */
+		public static boolean isFriend(String me, String friend, Connection c) throws SQLException{
+			String query = "SELECT * from follow WHERE id_user1='"+ me +"' AND id_user2='"+ friend+"';";
+			Statement st = c.createStatement();
+			ResultSet result = st.executeQuery(query);
+			boolean isFriend;
+			
+			if(result.next()) {
+				isFriend = true;			
+			}else {
+				isFriend = false;
+			}
+			st.close(); 
+			result.close();
+			
+			return isFriend;
+		}
 		
 		//public static int nbFollower(String id, Connection c){}
 

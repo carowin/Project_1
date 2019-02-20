@@ -12,9 +12,17 @@ import tools.ConnectionTools;
 import tools.FriendsTools;
 import tools.UserTools;
 
-public class RemoveFriendS {
+public class AddFriendS {
 	
-	public static JSONObject removeFriend(String key, String login_friend) throws JSONException, SQLException{
+	/** 
+	 * Ajout d'un ami dans la liste des amis de l'utilisateur. 
+	 * MAJ de la bdd.
+	 * @param key
+	 * @param id_friend, l'id de l'ami à ajouter
+	 * @return json
+	 */
+	public static JSONObject addFriend(String key, String login_friend) throws JSONException, SQLException {
+		
 		Connection connection = Database.getMySQLConnection();
 		String login_user = ConnectionTools.getLogin_withKey(key, connection);
 		
@@ -25,11 +33,11 @@ public class RemoveFriendS {
 			return ServiceTools.serviceRefused("User don't exist", -1);
 		}
 		
-		if(!FriendsTools.isFriend(login_user, login_friend, connection)) {
-			return ServiceTools.serviceRefused("Not Friend", -1);
+		if(FriendsTools.isFriend(login_user, login_friend, connection)) {
+			return ServiceTools.serviceRefused("Already Friend", -1);
 		}
-		if(!FriendsTools.unfollowAccount(login_user, login_friend, connection)) {
-			return ServiceTools.serviceRefused("Couldn't unfollow", -1);
+		if(!FriendsTools.followAccount(login_user, login_friend, connection)) {
+			return ServiceTools.serviceRefused("Can't follow", -1);
 		}
 	
 		JSONObject json=new JSONObject();

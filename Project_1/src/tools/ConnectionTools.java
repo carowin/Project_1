@@ -23,8 +23,52 @@ public class ConnectionTools {
 		return key;
 	}
 	
-	//public static String getKey(int id_user, Connection c);
+	/**
+	 * Accesseur à la clé d'un utilisateur, retourne la clé en cas de succes sinon retourne "ERROR"
+	 * @param id d'un utilisateur
+	 * @param c, une connexion
+	 * @return
+	 */
+	public static String getKey(int id, Connection c) throws SQLException {
+		String query =  "SELECT session_key FROM session WHERE user_id="+ id +";";
+		Statement st = c.createStatement();
+		ResultSet result = st.executeQuery(query);
+		
+		String key;
+		if(result.next()) {
+			key = result.getString("session_key");
+		}else {
+			key = "Error";
+		}
+		st.close(); 
+		result.close();
+		
+		return key;
+
+	}
 	
+	/**
+	 * Accesseur du login d'un utilisateur à partir de la cle de connexion
+	 * @param key, clé de connexion
+	 * @param c, une connexion
+	 * @return le login de l'utilisateur
+	 */
+	public static String getLogin_withKey(String key, Connection c) throws SQLException {
+		String query = "SELECT user_session FROM session WHERE session_key = '"+key+"';";
+		Statement st = c.createStatement();
+		ResultSet result = st.executeQuery(query);
+		String user_login;
+		
+		if(result.next()) {
+			user_login = result.getString("user_login");
+		}else {
+			user_login = "Error";
+		}
+		st.close();
+		result.close();
+		
+		return user_login;
+	}
 	
 	/**
 	 * Verifie si un utilisateur est connecte
@@ -47,6 +91,7 @@ public class ConnectionTools {
 			}else {
 				connected = false;
 			}
+			st.close();
 			result.close();
 
 		return connected;
