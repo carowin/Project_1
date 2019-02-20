@@ -14,7 +14,7 @@ public class RemoveFriendTest {
 		JSONObject json = null;
 		
 		try {
-			json = RemoveFriendS.removeFriend("44e128a5", "azertyuiop");
+			json = RemoveFriendS.removeFriend("44e128a5", 1);
 			
 		} catch (JSONException | SQLException e) {
 			e.printStackTrace();

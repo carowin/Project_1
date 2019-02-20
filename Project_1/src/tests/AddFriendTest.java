@@ -13,7 +13,7 @@ public class AddFriendTest {
 		JSONObject json = null;
 		
 		try {
-			json = AddFriendS.addFriend("44e128a5", "azertyuiop");
+			json = AddFriendS.addFriend("44e128a5", 1);
 			
 		} catch (JSONException | SQLException e) {
 			e.printStackTrace();

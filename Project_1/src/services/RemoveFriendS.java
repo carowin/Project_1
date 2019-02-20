@@ -14,11 +14,20 @@ import tools.UserTools;
 
 public class RemoveFriendS {
 	
-	public static JSONObject removeFriend(String key, String login_friend) throws JSONException, SQLException{
+	
+	/** 
+	 * Suppression d'un ami dans la liste des amis de l'utilisateur. 
+	 * MAJ de la bdd.
+	 * @param key, la cle de connexion
+	 * @param id_friend, l'id de l'ami à ajouter
+	 * @return json
+	 */
+	public static JSONObject removeFriend(String key, int id_friend) throws JSONException, SQLException{
 		Connection connection = Database.getMySQLConnection();
 		String login_user = ConnectionTools.getLogin_withKey(key, connection);
+		String login_friend = UserTools.getUserLogin(id_friend, connection);
 		
-		if (key == null || login_friend == null) {
+		if (key == null || id_friend == -1) {
 			return ServiceTools.serviceRefused("Wrong Parameter", -1);
 		}
 		if(!UserTools.checkUser(login_friend, connection)) {

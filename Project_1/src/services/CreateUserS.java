@@ -26,6 +26,8 @@ public class CreateUserS {
 	
 	/* POUR + TARD:
 	 * ajouter les argument nom, prenom, mail ...
+	 * NORMALEMENT : createUser(String prenom, String nom, String login, String password)
+	 * 				 return {}
 	 * */
 	public static JSONObject createUser(String login, String password) throws JSONException, SQLException{
 		
