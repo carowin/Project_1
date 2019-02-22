@@ -68,9 +68,9 @@ public class UserTools {
 	 * @param c, une connexion
 	 * @return true si insertion réussie, false sinon.
 	 */
-	public static boolean insertUser(String login, String password, Connection c) throws SQLException{
+	public static boolean insertUser(String login, String password, String mail, String nom, String prenom, Connection c)throws SQLException{
 
-		String update = "INSERT INTO user(user_login, user_password) values('"+login+"','"+password+"');";
+		String update = "INSERT INTO user(user_login,user_password,user_mail,user_nom,user_prenom) VALUES ('"+login+"','"+password+"','"+mail+"','"+nom+"','"+prenom+"');";
 		Statement st = c.createStatement();
 		int result = st.executeUpdate(update);
 		boolean exist;

@@ -34,7 +34,7 @@ public class CreateUserS {
 		if (UserTools.checkUser(login, connection)) {
 			return ServiceTools.serviceRefused("User name already exist", 1000);
 		}
-		if (!UserTools.insertUser(login, password, connection)) {
+		if (!UserTools.insertUser(login, password, mail, nom, prenom, connection)) {
 			return ServiceTools.serviceRefused("Could not insert user", 1000);		
 		}
 		connection.close();
