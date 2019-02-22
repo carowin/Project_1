@@ -22,17 +22,13 @@ public class CreateUserS {
 	 * @param password, mot de passe choisis
 	 * @return JONObject 
 	 * @throws SQLException 
-	 */
-	
-	/* POUR + TARD:
-	 * ajouter les argument nom, prenom, mail ...
 	 * NORMALEMENT : createUser(String prenom, String nom, String login, String password)
 	 * 				 return {}
 	 * */
-	public static JSONObject createUser(String login, String password) throws JSONException, SQLException{
+	public static JSONObject createUser(String login, String password, String mail, String nom, String prenom) throws JSONException, SQLException{
 		Connection connection = Database.getMySQLConnection();
 		JSONObject json = new JSONObject();
-		if(login == null || password == null) {
+		if(login == null || password == null || password == null || password == null) {
 			return ServiceTools.serviceRefused("Wrong Argument", 1);
 		}
 		if (UserTools.checkUser(login, connection)) {
