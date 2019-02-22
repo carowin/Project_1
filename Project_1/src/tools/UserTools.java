@@ -8,8 +8,6 @@ import java.sql.Statement;
 public class UserTools {
 
 	// REVOIR l'initialisation de id, peut etre initialisé par rapport au nombre d'elem dans la bdd
-	public static int id = 1; //Variable globale pour l'id d'un utilisateur
-	
 	
 	/** 
 	 * Methode permettant de verifier si un utilisateur est dans la
@@ -72,13 +70,12 @@ public class UserTools {
 	 */
 	public static boolean insertUser(String login, String password, Connection c) throws SQLException{
 
-		String update = "INSERT INTO user(user_id, user_login, user_password) values("+id+",'"+login+"','"+password+"');";
+		String update = "INSERT INTO user(user_login, user_password) values('"+login+"','"+password+"');";
 		Statement st = c.createStatement();
 		int result = st.executeUpdate(update);
 		boolean exist;
 		
 		if(result == 1) {
-			id ++; //incrementation de l'id pour le prochain utilisateur
 			exist = true;
 		}else {
 			exist = false;

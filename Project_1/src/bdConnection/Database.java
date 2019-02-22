@@ -9,15 +9,17 @@ import javax.sql.DataSource;
 
 
 /**
- * La BDD:
+ * 
+ * ATTENTION
+ * LA BDD  A ÉTÉ MODIFIÉ:
+ * 		user(user_id(P), user_login, user_password, user_mail, user_nom, user_prenom)
+ * 		session(session_key(P), user_id*, session_root, session_start)
+ * 		follow(user_login1*, user_login2*, follow_date) 
+ * 
+ * La BDD AVANT:
  * 		user(user_id, user_login, user_password) 
  * 		session(session_key, user_session*, session_root, session_start)
  * 		follow(id_user1*, id_user2*, follow_date)
- * 
- * A CHANGER (POSSIBILITÉ)
- * 		user(user_id, user_login, user_password)  //ajouter mail, nom, prenom
- * 		session(session_key, user_id*, session_root, session_start)
- * 		follow(user_login1*, user_login2*, follow_date) 
  */
 
 
@@ -39,7 +41,7 @@ public class Database {
 	
 	public static Connection getMySQLConnection() throws SQLException { 
 		if (DBStatic.mysql_pooling==false) { 
-			return(DriverManager.getConnection("jdbc:mysql://" + DBStatic.mysql_host + "/" + 
+			return(DriverManager.getConnection("jdbc:mysql://" + DBStatic.mysql_host +":" + DBStatic.mysql_port+ "/" +
 					DBStatic.mysql_bd, DBStatic.mysql_user, DBStatic.mysql_password));
 		} 
 		else { 

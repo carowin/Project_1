@@ -8,4 +8,11 @@ public class DBStatic {
 	public static String mysql_password = "root";
 	public static boolean mysql_pooling = false;
 	
+	/**
+	 * SI TRAVAILLE SUR MAC: ALORS AJOUTER LE PORT
+	 * SI SUR PPTI: ENLEVER ET RECREER À CHAQUE FOIS LA BDD
+	 */
+	
+	public static String mysql_port = "8889";
+	
 }

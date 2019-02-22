@@ -30,7 +30,6 @@ public class CreateUserS {
 	 * 				 return {}
 	 * */
 	public static JSONObject createUser(String login, String password) throws JSONException, SQLException{
-		
 		Connection connection = Database.getMySQLConnection();
 		JSONObject json = new JSONObject();
 		if(login == null || password == null) {
