@@ -30,14 +30,16 @@ public class CreateUser extends HttpServlet {
 		
 		String login = request.getParameter("login");
 		String password = request.getParameter("password");
+		String mail = request.getParameter("mail");
+		String nom = request.getParameter("nom");
+		String prenom = request.getParameter("prenom");
 		
 	 	response.setContentType( " text / plain " );
 		PrintWriter out = response.getWriter ();
 		
 		try {
-			json = CreateUserS.createUser(login, password);
+			json = CreateUserS.createUser(login, password, mail, nom, prenom);
 			out.println(json.toString());
-			
 		} catch (JSONException e) {
 			out.println(e.getMessage());
 		} catch (SQLException e) {
