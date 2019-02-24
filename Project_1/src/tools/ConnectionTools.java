@@ -76,26 +76,26 @@ public class ConnectionTools {
 	}
 	
 	/**
-	 * Accesseur du login d'un utilisateur à partir de la cle de connexion
+	 * Accesseur de l'id d'un utilisateur à partir de sa cle de connexion
 	 * @param key, clé de connexion
 	 * @param c, une connexion
-	 * @return le login de l'utilisateur
+	 * @return ll'id de l'utilisateur, -1 sinon
 	 */
-	public static String getLogin_withKey(String key, Connection c) throws SQLException {
-		String query = "SELECT user_session FROM session WHERE session_key = '"+key+"';";
+	public static int getId_withKey(String key, Connection c) throws SQLException {
+		String query = "SELECT user_id FROM session WHERE session_key = '"+key+"';";
 		Statement st = c.createStatement();
 		ResultSet result = st.executeQuery(query);
-		String user_login;
+		int user_id;
 		
 		if(result.next()) {
-			user_login = result.getString("user_login");
+			user_id = result.getInt("user_id");
 		}else {
-			user_login = "Error";
+			user_id = -1;
 		}
 		st.close();
 		result.close();
 		
-		return user_login;
+		return user_id;
 	}
 	
 	/**
@@ -135,7 +135,6 @@ public class ConnectionTools {
 	 */
 	public static boolean insertConnection(int id, Connection c) throws SQLException {
 		String key = generateKey(c);
-		System.out.println("OK generation cle\n" + key);
 		String update = "INSERT INTO session(session_key, user_id, session_root)"
 				+ " VALUES('"+ key +"',"+ id +", 1);";
 		

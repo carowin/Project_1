@@ -17,12 +17,12 @@ public class FriendsTools {
 		 * @param c, une connexion
 		 * @return true en cas de reussite, false sinon
 		 */
-		public static boolean followAccount(String me, String friend, Connection c) throws SQLException{
+		public static boolean followAccount(int me, int friend, Connection c) throws SQLException{
 			DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");  
 		    LocalDateTime now = LocalDateTime.now(); 
 			
 			String update = "INSERT INTO follow(id_user1, id_user2, follow_date) "
-					+ "values('"+ me +"','"+ friend +"','"+ now +"');";
+					+ "values("+ me +","+ friend +",'"+ now +"');";
 			Statement st = c.createStatement();
 			int result = st.executeUpdate(update);
 			boolean add_right;
@@ -44,9 +44,9 @@ public class FriendsTools {
 		 * @param c, une connexion
 		 * @return true en cas de reussite, false sinon
 		 */
-		public static boolean unfollowAccount(String me, String friend, Connection c) throws SQLException{
+		public static boolean unfollowAccount(int me, int friend, Connection c) throws SQLException{
 			String update = "DELETE FROM follow WHERE"
-					+ " id_user1 ='"+ me +"' AND id_user2 ='"+ friend +"';";
+					+ " id_user1 ="+ me +" AND id_user2 ="+ friend +";";
 			Statement st = c.createStatement();
 			int result = st.executeUpdate(update);
 			boolean delete_right;
@@ -68,7 +68,7 @@ public class FriendsTools {
 		 * @param c, une connexion
 		 * @return true si les 2 sont amis, false sinon
 		 */
-		public static boolean isFriend(String me, String friend, Connection c) throws SQLException{
+		public static boolean isFriend(int me, int friend, Connection c) throws SQLException{
 			String query = "SELECT * from follow WHERE id_user1='"+ me +"' AND id_user2='"+ friend+"';";
 			Statement st = c.createStatement();
 			ResultSet result = st.executeQuery(query);

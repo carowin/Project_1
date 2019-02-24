@@ -24,20 +24,24 @@ public class RemoveFriendS {
 	 */
 	public static JSONObject removeFriend(String key, int id_friend) throws JSONException, SQLException{
 		Connection connection = Database.getMySQLConnection();
-		String login_user = ConnectionTools.getLogin_withKey(key, connection);
+		int id_user = ConnectionTools.getId_withKey(key, connection);
+		String login_user = UserTools.getUserLogin(id_user, connection);
 		String login_friend = UserTools.getUserLogin(id_friend, connection);
 		
 		if (key == null || id_friend == -1) {
 			return ServiceTools.serviceRefused("Wrong Parameter", -1);
 		}
-		if(!UserTools.checkUser(login_friend, connection)) {
+		if(!UserTools.checkUser(login_user, connection)) {
 			return ServiceTools.serviceRefused("User don't exist", -1);
 		}
+		if(!UserTools.checkUser(login_friend, connection)) {
+			return ServiceTools.serviceRefused("User Friend don't exist", -1);
+		}
 		
-		if(!FriendsTools.isFriend(login_user, login_friend, connection)) {
+		if(!FriendsTools.isFriend(id_user, id_friend, connection)) {
 			return ServiceTools.serviceRefused("Not Friend", -1);
 		}
-		if(!FriendsTools.unfollowAccount(login_user, login_friend, connection)) {
+		if(!FriendsTools.unfollowAccount(id_user, id_friend, connection)) {
 			return ServiceTools.serviceRefused("Couldn't unfollow", -1);
 		}
 	

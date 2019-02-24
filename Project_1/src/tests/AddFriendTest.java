@@ -13,7 +13,10 @@ public class AddFriendTest {
 		JSONObject json = null;
 		
 		try {
-			json = AddFriendS.addFriend("44e128a5", 1);
+			json = AddFriendS.addFriend("27d302df-0e9a-4936-88c0-576fafdc6b54", 2);
+			json = AddFriendS.addFriend("27d302df-0e9a-4936-88c0-576fafdc6b54", 3);
+			json = AddFriendS.addFriend("27d302df-0e9a-4936-88c0-576fafdc6b54", 4);
+			
 			
 		} catch (JSONException | SQLException e) {
 			e.printStackTrace();
