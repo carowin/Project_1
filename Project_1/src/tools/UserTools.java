@@ -65,12 +65,16 @@ public class UserTools {
 	 * Methode d'insertion d'un utilisateur dans la base de donnee.
 	 * @param login, le login de l'utilisateur
 	 * @param password, son mot de passe
+	 * @param mail, le mail associé à l'utilisateur
+	 * @param name, le nom
+	 * @param firstName, le prenom
 	 * @param c, une connexion
 	 * @return true si insertion réussie, false sinon.
 	 */
-	public static boolean insertUser(String login, String password, String mail, String nom, String prenom, Connection c)throws SQLException{
+	public static boolean insertUser(String login, String password, String mail, String name, String firstName, Connection c)throws SQLException{
 
-		String update = "INSERT INTO user(user_login,user_password,user_mail,user_nom,user_prenom) VALUES ('"+login+"','"+password+"','"+mail+"','"+nom+"','"+prenom+"');";
+		String update = "INSERT INTO user(user_login,user_password,user_mail,user_name,user_firstName)"
+				+ " VALUES ('"+login+"','"+password+"','"+mail+"','"+name+"','"+firstName+"');";
 		Statement st = c.createStatement();
 		int result = st.executeUpdate(update);
 		boolean exist;
@@ -92,7 +96,7 @@ public class UserTools {
 	 * @return l'id de l'utilisateur s'il existe, sinon retourne -1 en cas d'erreur
 	 */
 	public static int getUserId(String login, Connection c) throws SQLException {
-		String query = "SELECT user_login FROM user WHERE user_login = '"+login+"';";
+		String query = "SELECT * FROM user WHERE user_login = '"+login+"';";
 		Statement st = c.createStatement();
 		ResultSet result = st.executeQuery(query);
 		int user_id;

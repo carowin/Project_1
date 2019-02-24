@@ -31,14 +31,14 @@ public class CreateUser extends HttpServlet {
 		String login = request.getParameter("login");
 		String password = request.getParameter("password");
 		String mail = request.getParameter("mail");
-		String nom = request.getParameter("nom");
-		String prenom = request.getParameter("prenom");
+		String name = request.getParameter("name");
+		String firstName = request.getParameter("firstName");
 		
 	 	response.setContentType( " text / plain " );
 		PrintWriter out = response.getWriter ();
 		
 		try {
-			json = CreateUserS.createUser(login, password, mail, nom, prenom);
+			json = CreateUserS.createUser(login, password, mail, name, firstName);
 			out.println(json.toString());
 		} catch (JSONException e) {
 			out.println(e.getMessage());

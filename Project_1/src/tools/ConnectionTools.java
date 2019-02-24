@@ -15,12 +15,40 @@ import bdConnection.Database;
 public class ConnectionTools {
 	
 	/**
-	 * Géneration d'une clef de 32 caractères
+	 * Géneration d'une clef de 32 caractères et verification que la clé n'est pas deja dans une session
 	 * @return la valeur de la clef
+	 * @throws SQLException 
 	 */
-	public static String generateKey() {
-		String key = UUID.randomUUID().toString();
+	public static String generateKey(Connection c) throws SQLException {
+		String key;
+		do {
+			key = UUID.randomUUID().toString();
+		}while(existKey(key, c));
 		return key;
+	}
+	
+	/**
+	 * Methode permettant de detecter si une clé existe dans la bdd
+	 * @param key, le clé de connexion
+	 * @param connection, une connexion
+	 * @return true dans la cas où la clé est deja associé à un utilisateur, false sinon
+	 * @throws SQLException 
+	 */
+	public static boolean existKey(String key, Connection connection) throws SQLException {
+		String query =  "SELECT * FROM session WHERE session_key='"+ key +"';";
+		Statement st = connection.createStatement();
+		ResultSet result = st.executeQuery(query);
+		boolean exist;
+		
+		if(result.next()) {
+			exist = true;
+		}else {
+			exist = false;
+		}
+		st.close(); 
+		result.close();
+		
+		return exist;
 	}
 	
 	/**
@@ -30,7 +58,7 @@ public class ConnectionTools {
 	 * @return
 	 */
 	public static String getKey(int id, Connection c) throws SQLException {
-		String query =  "SELECT session_key FROM session WHERE user_id="+ id +";";
+		String query =  "SELECT * FROM session WHERE user_id="+ id +";";
 		Statement st = c.createStatement();
 		ResultSet result = st.executeQuery(query);
 		
@@ -105,20 +133,15 @@ public class ConnectionTools {
 	 * @param c, connexion
 	 * @return true si insertion reussie, false sinon
 	 */
-	public static boolean insertConnection(int id, String key, Connection c) throws SQLException {
-		/*try {
-			Class.forName("com.mysql.jdbc.Driver");
-		}catch(ClassNotFoundException e) {e.getMessage();}
-		try {
-			Connection connection = DriverManager.getConnection("jdbc.mysql://localhost:3306/mysql");
-		}catch(SQLException e) {e.getMessage();}
-		return false;*/	
+	public static boolean insertConnection(int id, Connection c) throws SQLException {
+		String key = generateKey(c);
+		System.out.println("OK generation cle\n" + key);
+		String update = "INSERT INTO session(session_key, user_id, session_root)"
+				+ " VALUES('"+ key +"',"+ id +", 1);";
 		
-		String update = "INSERT INTO session VALUES("+ key +","+ id +", true, true);";
 		Statement st = c.createStatement();
 		int result = st.executeUpdate(update);
 		boolean insert_right;
-
 		if (result == 1){
 			insert_right = true;
 		}else{
@@ -126,7 +149,7 @@ public class ConnectionTools {
 		}
 		st.close();
 		
-		return insert_right;
+		return insert_right;	
 	}
 	
 	

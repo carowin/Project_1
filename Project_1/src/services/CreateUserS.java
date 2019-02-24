@@ -16,16 +16,17 @@ import tools.UserTools;
 public class CreateUserS {
 
 	/**
-	 * Methode de création d'un utilisateur. Verifie les paramètres passé en argument, et insertion
+	 * Methode de création d'un utilisateur. Verification des paramètres passé en argument, et insertion
 	 * du nouvel utilisateur dans la base de donnée
 	 * @param login, login choisis par l'utilisateur
 	 * @param password, mot de passe choisis
+	 * @param mail, le mail associé à l'utilisateur
+	 * @param name, le nom
+	 * @param firstName, le prenom
 	 * @return JONObject 
 	 * @throws SQLException 
-	 * NORMALEMENT : createUser(String prenom, String nom, String login, String password)
-	 * 				 return {}
 	 * */
-	public static JSONObject createUser(String login, String password, String mail, String nom, String prenom) throws JSONException, SQLException{
+	public static JSONObject createUser(String login, String password, String mail, String name, String firstName) throws JSONException, SQLException{
 		Connection connection = Database.getMySQLConnection();
 		JSONObject json = new JSONObject();
 		if(login == null || password == null || password == null || password == null) {
@@ -34,7 +35,7 @@ public class CreateUserS {
 		if (UserTools.checkUser(login, connection)) {
 			return ServiceTools.serviceRefused("User name already exist", 1000);
 		}
-		if (!UserTools.insertUser(login, password, mail, nom, prenom, connection)) {
+		if (!UserTools.insertUser(login, password, mail, name, firstName, connection)) {
 			return ServiceTools.serviceRefused("Could not insert user", 1000);		
 		}
 		connection.close();
