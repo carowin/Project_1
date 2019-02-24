@@ -14,7 +14,7 @@ public class LogoutTest {
 		JSONObject json = null;
 		
 		try {
-			json = LogoutS.logout("44e128a5");
+			json = LogoutS.logout("92f91afe-48d8-4e90-9612-e650fbd0bfc1");
 		} catch (JSONException | SQLException e) {
 			e.printStackTrace();
 		}

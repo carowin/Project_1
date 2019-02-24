@@ -161,7 +161,7 @@ public class ConnectionTools {
 	 * @throws SQLException 
 	 */
 	public static boolean removeConnection(String key, Connection c) throws SQLException {
-		String update = "DELETE FROM session where session_key ="+key +";";
+		String update = "DELETE FROM session where session_key ='"+key +"';";
 		Statement st = c.createStatement();
 		int result = st.executeUpdate(update);
 		boolean delete_right;
