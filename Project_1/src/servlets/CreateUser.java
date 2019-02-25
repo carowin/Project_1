@@ -13,6 +13,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import services.CreateUserS;
+import tools.UserTools;
+//http://localhost:8080/Project_1/Servlets/CreateUser?login=gerard&password=ggdo&mail=gg@yahoo.com&name=do&firstName=gerard
 
 
 /**
@@ -36,8 +38,8 @@ public class CreateUser extends HttpServlet {
 		
 	 	response.setContentType( " text / plain " );
 		PrintWriter out = response.getWriter ();
-		
 		try {
+			
 			json = CreateUserS.createUser(login, password, mail, name, firstName);
 			out.println(json.toString());
 		} catch (JSONException e) {

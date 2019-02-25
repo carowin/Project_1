@@ -15,4 +15,6 @@ public class DBStatic {
 	
 	public static String mysql_port = "8889";
 	
+	public static String mongo_bd = "mongo_hr";
+	public static String collection_msg = "collection_message";
 }

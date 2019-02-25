@@ -4,7 +4,7 @@
 <Resource
 name="jdbc/db" type="javax.sql.DataSource"
 maxActive="100" maxIdle="30" maxWait="10000"
-url="jdbc:mysql://localhost/huynh_rzeszutko"
+url="jdbc:mysql://localhost:8889/huynh_rzeszutko"
 driverClassName="com.mysql.jdbc.Driver"
 username="root" password="root"
 />

@@ -27,6 +27,7 @@ public class CreateUserS {
 	 * @throws SQLException 
 	 * */
 	public static JSONObject createUser(String login, String password, String mail, String name, String firstName) throws JSONException, SQLException{
+		System.out.println("Rentre dans create user");
 		Connection connection = Database.getMySQLConnection();
 		JSONObject json = new JSONObject();
 		if(login == null || password == null || password == null || password == null) {
@@ -35,9 +36,11 @@ public class CreateUserS {
 		if (UserTools.checkUser(login, connection)) {
 			return ServiceTools.serviceRefused("User name already exist", 1000);
 		}
+		System.out.println("ok check user");
 		if (!UserTools.insertUser(login, password, mail, name, firstName, connection)) {
 			return ServiceTools.serviceRefused("Could not insert user", 1000);		
 		}
+		System.out.println("ok insert user");
 		connection.close();
 		json.put("Status", "succes");
 		

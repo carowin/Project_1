@@ -7,6 +7,10 @@ import java.sql.Statement;
 
 public class UserTools {
 
+	
+	public static String hello() {
+		return "helo";
+	}
 	// REVOIR l'initialisation de id, peut etre initialisé par rapport au nombre d'elem dans la bdd
 	
 	/** 
@@ -122,7 +126,7 @@ public class UserTools {
 	 */
 	public static String getUserLogin(int id, Connection c) throws SQLException {
 		
-		String query = "SELECT user_login FROM user WHERE user_id = "+id+";";
+		String query = "SELECT * FROM user WHERE user_id = "+id+";";
 		Statement st = c.createStatement();
 		ResultSet result = st.executeQuery(query);
 		String user_login;
@@ -136,6 +140,24 @@ public class UserTools {
 		result.close();
 		
 		return user_login;
+	}
+	
+	public static String getUserName(int id, Connection c) throws SQLException {
+		
+		String query = "SELECT * FROM user WHERE user_id = "+id+";";
+		Statement st = c.createStatement();
+		ResultSet result = st.executeQuery(query);
+		String user_name;
+		
+		if(result.next()) {
+			user_name = result.getString("user_name");
+		}else {
+			user_name = "Error";
+		}
+		st.close();
+		result.close();
+		
+		return user_name;
 	}
 	
 	/**
