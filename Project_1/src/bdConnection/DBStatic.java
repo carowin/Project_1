@@ -6,7 +6,7 @@ public class DBStatic {
 	public static String mysql_bd = "huynh_rzeszutko";
 	public static String mysql_user = "root";
 	public static String mysql_password = "root";
-	public static boolean mysql_pooling = false;
+	public static boolean mysql_pooling = true;
 	
 	/**
 	 * SI TRAVAILLE SUR MAC: ALORS AJOUTER LE PORT

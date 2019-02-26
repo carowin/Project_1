@@ -53,6 +53,17 @@ xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://java.sun.com/xml/n
     <servlet-name>AddComment</servlet-name>
     <url-pattern>/Servlets/AddComment</url-pattern>
   </servlet-mapping>
+  
+  
+  
+  <!-- Declaration Data Source -->
+  <ressource-ref>
+  	<description>DB Connexion</description>
+  	<res-ref-name>jdbc/db</res-ref-name>
+  	<res-type>javax.sql.DataSource</res-type>
+  	<res-auth>Container</res-auth>
+  </ressource-ref>
+	
 
   
 </web-app>
