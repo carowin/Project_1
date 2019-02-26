@@ -14,7 +14,7 @@ import tools.ConnectionTools;
 import tools.UserTools;
 
 public class CreateUserS {
-
+ 
 	/**
 	 * Methode de création d'un utilisateur. Verification des paramètres passé en argument, et insertion
 	 * du nouvel utilisateur dans la base de donnée

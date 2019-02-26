@@ -11,7 +11,7 @@ import jsonMessage.ServiceTools;
 import tools.ConnectionTools;
 import tools.FriendsTools;
 import tools.UserTools;
-
+ 
 public class AddFriendS {
 	
 	/** 

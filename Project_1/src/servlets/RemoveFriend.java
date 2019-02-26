@@ -15,7 +15,7 @@ import org.json.JSONObject;
 
 import services.RemoveFriendS;
 
-
+  
 /**
  * Servlet implementation class RemoveFriend
  */

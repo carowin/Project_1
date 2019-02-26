@@ -1,6 +1,6 @@
 package bdConnection;
 
-public class DBStatic {
+public class DBStatic {  
 
 	public static String mysql_host = "localhost";
 	public static String mysql_bd = "huynh_rzeszutko";

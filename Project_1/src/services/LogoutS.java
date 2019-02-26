@@ -14,7 +14,7 @@ import java.sql.SQLException;
 
 import jsonMessage.ServiceTools;
 
-public class LogoutS {
+public class LogoutS { 
 	/**
 	 * Methode permettant la deconnexion d'un utilisateur. 
 	 * @param key, duree de la clef de connexion

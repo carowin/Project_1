@@ -16,7 +16,7 @@ import services.CreateUserS;
 import tools.UserTools;
 //http://localhost:8080/Project_1/Servlets/CreateUser?login=gerard&password=ggdo&mail=gg@yahoo.com&name=do&firstName=gerard
 
-
+  
 /**
  * Servlet implementation class CreateUser
  */

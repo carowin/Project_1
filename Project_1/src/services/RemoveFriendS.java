@@ -14,7 +14,7 @@ import tools.UserTools;
 
 public class RemoveFriendS {
 	
-	
+	 
 	/** 
 	 * Suppression d'un ami dans la liste des amis de l'utilisateur. 
 	 * MAJ de la bdd.

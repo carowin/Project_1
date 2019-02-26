@@ -12,7 +12,7 @@ import jsonMessage.ServiceTools;
 import tools.ConnectionTools;
 import tools.UserTools;
 
-public class LoginS {
+public class LoginS { 
 
 	/**
 	 * Methode permettant la connexion à l'application. Verification des valeurs des paramètres.

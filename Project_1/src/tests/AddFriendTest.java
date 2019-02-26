@@ -5,7 +5,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import services.AddFriendS;
-
+ 
 public class AddFriendTest {
 
 	public static void main(String[] args) {
