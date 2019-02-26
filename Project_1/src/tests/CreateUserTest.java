@@ -21,7 +21,6 @@ public class CreateUserTest {
 			json = CreateUserS.createUser("henry", "iv","henry@gmail.com","iv","henry");
 			json = CreateUserS.createUser("charles", "charlie","cha@gmail.com","ly","charles");
 		} catch (JSONException | SQLException e) {
-			
 			e.printStackTrace();
 		}
 		System.out.println(json.toString());

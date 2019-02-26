@@ -17,6 +17,8 @@ import services.AddFriendS;
 /**
  * Servlet implementation class AddFriend
  */
+
+//http://localhost:8080/Project_1/Servlets/AddFriend?key=e09811b8-5acf-4de2-8009-6d971864bfe8&id=1
 @WebServlet("/AddFriend")
 public class AddFriend extends HttpServlet {
 	private static final long serialVersionUID = 1L;

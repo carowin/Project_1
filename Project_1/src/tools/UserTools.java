@@ -7,10 +7,7 @@ import java.sql.Statement;
 
 public class UserTools {
 
-	
-	public static String hello() {
-		return "helo";
-	}
+
 	// REVOIR l'initialisation de id, peut etre initialisé par rapport au nombre d'elem dans la bdd
 	
 	/** 

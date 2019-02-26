@@ -46,7 +46,11 @@ public class AddCommentS {
 		String name_user = UserTools.getUserName(id_user, c);
 		
 		JSONObject json=new JSONObject();
-		json = MessageTools.addComment(id_user, login_user, name_user, content);
+		try {
+			json = MessageTools.addComment(id_user, login_user, name_user, content);
+		}catch(UnknownHostException unknown) {
+			unknown.printStackTrace();
+		}
 		return json;
 	}
 
