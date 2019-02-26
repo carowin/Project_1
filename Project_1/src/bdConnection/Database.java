@@ -62,7 +62,7 @@ public class Database {
 	}
 	
 	public static MongoCollection<Document> getMongoCollection(String collection) {
-		MongoClient mongo = MongoClients.create();
+		MongoClient mongo = MongoClients.create("mongodb://" + DBStatic.mongo_host + ":" + DBStatic.mongo_port);
 		MongoDatabase db =  mongo.getDatabase(DBStatic.mongo_bd);
 		return db.getCollection(collection);
 	}

@@ -1,6 +1,5 @@
 package tests;
   
-import java.rmi.UnknownHostException;
 import java.sql.SQLException;
 
 import org.json.JSONException;

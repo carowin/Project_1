@@ -44,10 +44,9 @@ public class AddCommentS {
 		int id_user = ConnectionTools.getId_withKey(key, c);
 		String login_user = UserTools.getUserLogin(id_user, c);
 		String name_user = UserTools.getUserName(id_user, c);
-		String id_comment = MessageTools.generateIdComment();
 		
 		JSONObject json=new JSONObject();
-		json = MessageTools.addComment(id_user, login_user, name_user, id_comment, content);
+		json = MessageTools.addComment(id_user, login_user, name_user, content);
 		return json;
 	}
 

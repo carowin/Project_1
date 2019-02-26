@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 
 import org.bson.Document;
+import org.bson.types.ObjectId;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -17,22 +18,6 @@ import bdConnection.DBStatic;
 import bdConnection.Database;
 
 public class MessageTools {
-
-	/**
-	 * Generation d'une chaine de caractere aléatoire de longueur 5.
-	 * @return la chaine generee
-	 */
-	public static String generateIdComment() {
-	    String chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890"; 
-	    String pass = "";
-	    for(int x=0;x<5;x++)
-	    {
-	       int i = (int)Math.floor(Math.random() * 62);
-	       pass += chars.charAt(i);
-	    }
-	    System.out.println(pass);
-	    return pass;
-	}
 	
 	/**
 	 * Methode permettant d'ajouter un message
@@ -40,13 +25,14 @@ public class MessageTools {
 	 * @param c
 	 * @return
 	 */
-	public static JSONObject addComment(int id_user, String login_user, String name_user, String id_comment,String text) throws UnknownHostException, JSONException{
+	public static JSONObject addComment(int id_user, String login_user, String name_user,String text) throws UnknownHostException, JSONException{
 		GregorianCalendar calendar = new java.util.GregorianCalendar();
 		Date d = calendar.getTime();
 		
 		MongoCollection<Document> message = Database.getMongoCollection(DBStatic.collection_msg);
 		Document query = new Document();
 		JSONObject json = new JSONObject();
+		ObjectId id_comment = new ObjectId();
 		query.append("id_comment", id_comment);
 		query.append("id_user", id_user);
 		query.append("name", name_user);
