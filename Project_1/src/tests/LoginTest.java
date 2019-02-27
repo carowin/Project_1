@@ -14,9 +14,11 @@ public class LoginTest {
 		JSONObject json = null;
 		
 		try {
-			json = LoginS.login("azerty", "1234567");
+			/*json = LoginS.login("azerty", "1234567");
 			json = LoginS.login("albert", "totot");
-			json = LoginS.login("alphonse", "bobo");
+			json = LoginS.login("alphonse", "bobo");*/
+			
+			json = LoginS.login("chapelin", "hahaha");
 		} catch (JSONException | SQLException e) {
 			e.printStackTrace();
 		}

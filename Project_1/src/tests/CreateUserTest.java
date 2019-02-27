@@ -14,12 +14,15 @@ public class CreateUserTest {
 		JSONObject json = null;
 		
 		try {
-			json = CreateUserS.createUser("azerty", "1234567","azerty@gmail.com","uiop","azerty");
+			/*json = CreateUserS.createUser("azerty", "1234567","azerty@gmail.com","uiop","azerty");
 			json = CreateUserS.createUser("albert", "totot","coucou@gmail.com","to","albert");
 			json = CreateUserS.createUser("gilbert", "tatat","gilbert@gmail.com","tata","gilbert");
 			json = CreateUserS.createUser("alphonse", "bobo","alphonse@gmail.com","bob","alphonse");
 			json = CreateUserS.createUser("henry", "iv","henry@gmail.com","iv","henry");
-			json = CreateUserS.createUser("charles", "charlie","cha@gmail.com","ly","charles");
+			json = CreateUserS.createUser("charles", "charlie","cha@gmail.com","ly","charles");*/
+			
+			json = CreateUserS.createUser("chapelin", "hahaha","chapelin@hotmail.com","ha","chapelin");
+			
 		} catch (JSONException | SQLException e) {
 			e.printStackTrace();
 		}
@@ -27,3 +30,8 @@ public class CreateUserTest {
 	}
 }
   
+
+//http://localhost:8080/Project_1/Servlets/CreateUser?login=arnaud&password=qsdf&mail=arnaud@msn.com&name=le&prenom=arnaud
+//http://localhost:8080/Project_1/Servlets/Login?login=arnaud&password=qsd
+
+//http://localhost:8080/Project_1/Servlets/AddComment?key=27d302df-0e9a-4936-88c0-576fafdc6b54&content=il est 15h
