@@ -11,6 +11,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.mongodb.DBCursor;
+import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
 
@@ -19,11 +20,13 @@ import bdConnection.Database;
 
 public class MessageTools {
 	
+	
 	/**
 	 * Methode permettant d'ajouter un message
-	 * @param key
-	 * @param c
-	 * @return
+	 * @param id_user, id de l'utilisateur
+	 * @param login_user, login de l'utilisateur
+	 * @param name_user, name de l'utilisateur
+	 * @param text, à inserer
 	 */
 	public static JSONObject addComment(int id_user, String login_user, String name_user,String text) throws UnknownHostException, JSONException{
 		GregorianCalendar calendar = new java.util.GregorianCalendar();
@@ -32,8 +35,8 @@ public class MessageTools {
 		MongoCollection<Document> message = Database.getMongoCollection(DBStatic.collection_msg);
 		Document query = new Document();
 		JSONObject json = new JSONObject();
-		ObjectId id_comment = new ObjectId();
-		query.append("id_comment", id_comment);
+		//ObjectId id_comment = new ObjectId();
+		//query.append("id_comment", id_comment);
 		query.append("id_user", id_user);
 		query.append("name", name_user);
 		query.append("login", login_user);
@@ -47,15 +50,46 @@ public class MessageTools {
 		return json;
 	}
 	
-/*	public static JSONObject removeComment(int id_user, String login_user, String name_user, String id_comment, String text) throws UnknownHostException, JSONException{
-		Document document = new Document();
+	
+	/**
+	 * Supprime un document de la collection, ce document contient les informations du messages à supprimer
+	 * @param id_message, l'identifiant du message
+	 */
+	public static JSONObject removeComment(String id_message) throws UnknownHostException, JSONException{
+			
 		MongoCollection<Document> message = Database.getMongoCollection(DBStatic.collection_msg);
-		document.append("id_comment", id_comment);
-		MongoCursor<Document> cursor = message.find().iterator();
+		Document query = new Document();
+			
+		query.append("id_message", id_message);
+			
+		message.deleteOne(query);
+		JSONObject json = null;
+		json.put("Success", "OK");
 		
+		return json;
 		
-		return new JSONObject();
-	}*/
+	}
+	/**
+	 * Methode permettant de verifier d'un message existe
+	 * @param id_message, l'id du message
+	 * @return true s'il existe, false sinon
+	 */
+	public static boolean idMessageExist(String id_message) {
+		MongoCollection<Document> message = Database.getMongoCollection(DBStatic.collection_msg);
+		Document query = new Document();
+		
+		query.append("_id","ObjectId(\""+id_message+"\")");
+		FindIterable<Document> fi = message.find(query);
+		MongoCursor<Document> cursor = fi.iterator();
+		boolean exist;
+		if(cursor.hasNext()) {
+			exist = true;
+		}else {
+			exist =false;
+		}
+		System.out.println(exist);
+		return exist;
+	}
 	
 
 }

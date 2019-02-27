@@ -26,6 +26,10 @@ xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://java.sun.com/xml/n
   	<servlet-name>AddComment</servlet-name>
     <servlet-class>servlets.AddComment</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>DeleteComment</servlet-name>
+    <servlet-class>servlets.DeleteComment</servlet-class>
+  </servlet>
   
   
   
@@ -52,6 +56,10 @@ xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://java.sun.com/xml/n
   <servlet-mapping>
     <servlet-name>AddComment</servlet-name>
     <url-pattern>/Servlets/AddComment</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>DeleteComment</servlet-name>
+    <url-pattern>/Servlets/DeleteComment</url-pattern>
   </servlet-mapping>
   
   
