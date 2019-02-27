@@ -34,9 +34,7 @@ public class DeleteCommentS {
 		
 		JSONObject json=new JSONObject();
 		
-		System.out.println("OK partie avant try");
 		try {
-			System.out.println("Rentre try");
 			json = MessageTools.removeComment(id_message);
 		} catch (UnknownHostException e) {
 			e.printStackTrace();

@@ -31,7 +31,7 @@ public class CreateUserTest {
 }
   
 
-//http://localhost:8080/Project_1/Servlets/CreateUser?login=arnaud&password=qsdf&mail=arnaud@msn.com&name=le&prenom=arnaud
-//http://localhost:8080/Project_1/Servlets/Login?login=arnaud&password=qsd
+//http://localhost:8080/Twister/Servlets/CreateUser?login=arnaud&password=qsdf&mail=arnaud@msn.com&name=le&prenom=arnaud
+//http://localhost:8080/Twister/Servlets/Login?login=arnaud&password=qsdf
 
-//http://localhost:8080/Project_1/Servlets/AddComment?key=27d302df-0e9a-4936-88c0-576fafdc6b54&content=il est 15h
+//http://localhost:8080/Twister/Servlets/AddComment?key=27d302df-0e9a-4936-88c0-576fafdc6b54&content=PIZZAAA

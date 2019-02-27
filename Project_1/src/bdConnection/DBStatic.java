@@ -14,7 +14,7 @@ public class DBStatic {
 	 * SI TEST LOCAL METTRE À FALSE  
 	 * SI TEST SERVEUR METTRE À TRUE
 	 */
-	public static boolean mysql_pooling = false;
+	public static boolean mysql_pooling = true;
 	
 	/**
 	 * SI TRAVAILLE SUR MAC: ALORS AJOUTER LE PORT

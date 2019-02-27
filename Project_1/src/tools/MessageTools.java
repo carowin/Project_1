@@ -60,15 +60,15 @@ public class MessageTools {
 		MongoCollection<Document> message = Database.getMongoCollection(DBStatic.collection_msg);
 		Document query = new Document();
 			
-		query.append("id_message", id_message);
-			
+		query.append("id_message", new ObjectId(id_message));
 		message.deleteOne(query);
 		JSONObject json = null;
 		json.put("Success", "OK");
 		
 		return json;
-		
 	}  
+	
+	
 	/**
 	 * Methode permettant de verifier d'un message existe
 	 * @param id_message, l'id du message
@@ -78,7 +78,7 @@ public class MessageTools {
 		MongoCollection<Document> message = Database.getMongoCollection(DBStatic.collection_msg);
 		Document query = new Document();
 		
-		query.append("_id","ObjectId(\""+id_message+"\")");
+		query.append("_id",new ObjectId(id_message));
 		FindIterable<Document> fi = message.find(query);
 		MongoCursor<Document> cursor = fi.iterator();
 		boolean exist;
