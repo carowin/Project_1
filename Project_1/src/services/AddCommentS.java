@@ -27,7 +27,7 @@ public class AddCommentS {
 	 * Methode permettant d'ajouter un commentaire sur son profil. Verification des paramètres.
 	 * @param key, duree de la clef de l'utilisateur
 	 * @param text, commentaire à inserer
-	 * @return JSONObject
+	 * @return JSONObject  
 	 * @throws SQLException 
 	 * @throws UnknownHostException 
 	 */

@@ -9,7 +9,7 @@ import java.time.format.DateTimeFormatter;
 import java.sql.Connection;
 
 public class FriendsTools {
-
+  
 		/**
 		 * Methode permettant de follow un compte
 		 * @param me, l'utilisateur

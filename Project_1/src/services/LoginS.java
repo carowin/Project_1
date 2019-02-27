@@ -13,7 +13,7 @@ import tools.ConnectionTools;
 import tools.UserTools;
 
 public class LoginS { 
-
+  
 	/**
 	 * Methode permettant la connexion à l'application. Verification des valeurs des paramètres.
 	 * Verifie le login de l'utilisateur dans la bdd ainsi que son password. Si tout ok connexion établie.

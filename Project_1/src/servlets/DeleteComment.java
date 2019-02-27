@@ -16,7 +16,7 @@ import org.json.JSONObject;
 import services.DeleteCommentS;
 import services.LoginS;
 
-/**  
+/**    
  * Servlet implementation class AddComment
  */
 @WebServlet("/DeleteComment")

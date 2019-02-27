@@ -13,7 +13,7 @@ import org.json.JSONObject;
 
 import services.LogoutS;
 
-/**
+/**  
  * Servlet implementation class Logout
  */
 public class Logout extends HttpServlet {

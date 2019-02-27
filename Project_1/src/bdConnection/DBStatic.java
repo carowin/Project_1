@@ -11,7 +11,7 @@ public class DBStatic {
 	public static String mysql_password = "root";
 	
 	/**
-	 * SI TEST LOCAL METTRE À FALSE
+	 * SI TEST LOCAL METTRE À FALSE  
 	 * SI TEST SERVEUR METTRE À TRUE
 	 */
 	public static boolean mysql_pooling = false;

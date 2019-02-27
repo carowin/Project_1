@@ -13,7 +13,7 @@ import tools.ConnectionTools;
 import tools.MessageTools;
 import tools.UserTools;
 
-public class DeleteCommentS {
+public class DeleteCommentS {  
 	
 	public static JSONObject deleteComment(String key, String id_message) throws SQLException, JSONException {
 		Connection c = Database.getMySQLConnection();

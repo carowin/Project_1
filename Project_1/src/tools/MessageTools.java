@@ -68,7 +68,7 @@ public class MessageTools {
 		
 		return json;
 		
-	}
+	}  
 	/**
 	 * Methode permettant de verifier d'un message existe
 	 * @param id_message, l'id du message

@@ -39,4 +39,4 @@ public class LogoutS {
 		return ServiceTools.serviceAccepted();
 	}
 	
-}
+}  

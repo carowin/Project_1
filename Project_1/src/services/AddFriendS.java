@@ -13,7 +13,7 @@ import tools.FriendsTools;
 import tools.UserTools;
  
 public class AddFriendS {
-	
+	  
 	/** 
 	 * Ajout d'un ami dans la liste des amis de l'utilisateur. 
 	 * MAJ de la bdd.

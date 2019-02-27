@@ -26,3 +26,4 @@ public class RemoveFriendTest {
 		System.out.println(json.toString());
 	}
 }
+  

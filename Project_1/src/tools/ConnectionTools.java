@@ -13,7 +13,7 @@ import bdConnection.DBStatic;
 import bdConnection.Database;
 
 public class ConnectionTools {
-	
+	  
 	/**
 	 * Géneration d'une clef de 32 caractères et verification que la clé n'est pas deja dans une session
 	 * @return la valeur de la clef
