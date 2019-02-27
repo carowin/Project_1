@@ -175,4 +175,23 @@ public class ConnectionTools {
 		return delete_right;
 		
 	}
+	
+	
+	public static boolean connectionInHour(String key, Connection c) throws SQLException {
+        //session(session_key(P), user_id*, session_root, session_start)
+        String query = "Select session_start From session"
+                + "Where session_key="+key+""
+        		+ "And (TIMESTAMPDIFF(SECOND,session_start,SYSDATE())<360 );";
+	    Statement st = c.createStatement();
+	    ResultSet r = st.executeQuery(query);
+	    String dat = "";
+	    int id;
+	    if(r.next()) {
+	    	id  = ConnectionTools.getId_withKey(key, c);
+	        return true;
+        }
+	    removeConnection(key, c);    
+	    return false;    
+	}
+
 }

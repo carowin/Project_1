@@ -5,7 +5,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-
+import java.util.ArrayList;
 import java.sql.Connection;
 
 public class FriendsTools {
@@ -85,8 +85,15 @@ public class FriendsTools {
 			return isFriend;
 		}
 		
-		//public static int nbFollower(String id, Connection c){}
-
-		
-
+		public static ArrayList<Integer> getFriend(int id, Connection c) throws SQLException{
+			String query = "SELECT * FROM follow WHERE id_user1="+ id +";";
+			Statement st = c.createStatement();
+			ResultSet result = st.executeQuery(query);
+			
+			ArrayList<Integer> listFriend = new ArrayList<Integer>();
+			while(result.next()) {
+				listFriend.add(result.getInt("id_user2"));
+			}
+			return listFriend;
+		}
 }

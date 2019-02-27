@@ -1,7 +1,9 @@
 package tools;
  
+import java.awt.List;
 import java.net.UnknownHostException;
 import java.sql.Connection;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
@@ -90,6 +92,25 @@ public class MessageTools {
 		System.out.println(exist);
 		return exist;
 	}
+	
+	public static JSONObject listMessageOfIds(ArrayList<Integer> id) throws JSONException {
+		MongoCollection<Document> message = Database.getMongoCollection(DBStatic.collection_msg);
+		Document query =new Document();
+		JSONObject json = null;
+		for(int i=0; i<id.size();i++) {
+			query.append("id_user", id);
+			FindIterable<Document> fi = message.find(query);
+			MongoCursor<Document> cursor = fi.iterator();
+			
+			while(cursor.next() != null) {
+				Document obj = cursor.next();
+				json.put("Message de "+id,obj.get("content"));
+				
+			}
+		}
+		return json;	
+	}
+	
 	
 
 }
