@@ -37,8 +37,8 @@ public class AddCommentS {
 		if(key == null || content == null) {
 			return ServiceTools.serviceRefused("Wrong Parameter", -1);
 		}
-		if(!ConnectionTools.isConnected(key,c)){
-			return ServiceTools.serviceRefused("Not connected",-1);
+		if(!ConnectionTools.connectionOneHour(key,c)){
+			return ServiceTools.serviceRefused("Connection expired",-1);
 		}
 		
 		int id_user = ConnectionTools.getId_withKey(key, c);

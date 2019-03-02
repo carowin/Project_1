@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 public class UserTools {
 
@@ -46,7 +47,7 @@ public class UserTools {
 	 * */
 	public static boolean checkPassword(String login, String password, Connection c) throws SQLException {
 		
-		String query = "SELECT user_login FROM user WHERE user_login = '"+login+"' AND user_password = '"+password+"';";
+		String query = "SELECT * FROM user WHERE user_login = '"+login+"' AND user_password = '"+password+"';";
 		Statement st = c.createStatement();
 		ResultSet result = st.executeQuery(query);
 		boolean exist;
@@ -56,6 +57,7 @@ public class UserTools {
 		}else {
 			exist = false;
 		}
+		System.out.println(exist);
 		st.close();
 		result.close();
 		
@@ -139,6 +141,9 @@ public class UserTools {
 		return user_login;
 	}
 	
+	/**
+	 * Retourne le nom d'un utilisateur à partir de son id
+	 */
 	public static String getUserName(int id, Connection c) throws SQLException {
 		
 		String query = "SELECT * FROM user WHERE user_id = "+id+";";
@@ -179,6 +184,24 @@ public class UserTools {
 		result.close();
 		
 		return key;
+	}
+	
+	
+	/**
+	 * Retourne la liste des utilisateurs inscrit sur le site
+	 * @throws SQLException 
+	 */
+	public static ArrayList<Integer> getListUsers(Connection c) throws SQLException{
+		
+		String query = "SELECT * FROM user";
+		Statement st = c.createStatement();
+		ResultSet result = st.executeQuery(query);
+		ArrayList<Integer> listUsers = new ArrayList<Integer>();
+		
+		while(result.next()) {
+			listUsers.add(result.getInt("user_id"));
+		}
+		return listUsers;
 	}
 }
 

@@ -35,7 +35,7 @@ public class LoginS {
 		}
 		
 		if(!UserTools.checkPassword(login,password, connection)) {
-			return ServiceTools.serviceRefused("Incorrect Password"+login, 2);
+			return ServiceTools.serviceRefused("Incorrect Password"+login, -1);
 		}
 		int user_id = UserTools.getUserId(login, connection);
 		ConnectionTools.insertConnection(user_id, connection);

@@ -31,6 +31,9 @@ public class RemoveFriendS {
 		if (key == null || id_friend == -1) {
 			return ServiceTools.serviceRefused("Wrong Parameter", -1);
 		}
+		if(!ConnectionTools.connectionOneHour(key,connection)){
+			return ServiceTools.serviceRefused("Connection expired",-1);
+		}
 		if(!UserTools.checkUser(login_user, connection)) {
 			return ServiceTools.serviceRefused("User don't exist", -1);
 		}

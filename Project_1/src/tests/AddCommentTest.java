@@ -10,7 +10,7 @@ import services.AddCommentS;
 public class AddCommentTest {
 	public static void main(String[] args) {
 		try {
-			JSONObject json = AddCommentS.addComment("27d302df-0e9a-4936-88c0-576fafdc6b54", "CC tout le monde !!!!");
+			JSONObject json = AddCommentS.addComment("33343bf8-9e7c-4751-9dda-dae1522de121", "Message tres!!!!");
 			System.out.println(json.toString());
 		}catch(JSONException jex) {
 			jex.printStackTrace();

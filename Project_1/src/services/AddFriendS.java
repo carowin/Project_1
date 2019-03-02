@@ -31,19 +31,22 @@ public class AddFriendS {
 		if (key == null || id_friend == -1) {
 			return ServiceTools.serviceRefused("Wrong Parameter", -1);
 		}
+		if(!ConnectionTools.connectionOneHour(key,connection)){
+			return ServiceTools.serviceRefused("Connection expired",-1);
+		}
 		if(!UserTools.checkUser(login_user, connection)) {
 			return ServiceTools.serviceRefused("User don't exist", -1);
 		}
 		if(!UserTools.checkUser(login_friend, connection)) {
 			return ServiceTools.serviceRefused("User Friend don't exist", -1);
 		}
-		
 		if(FriendsTools.isFriend(id_user, id_friend, connection)) {
 			return ServiceTools.serviceRefused("Already Friend", -1);
 		}
 		if(!FriendsTools.followAccount(id_user, id_friend, connection)) {
 			return ServiceTools.serviceRefused("Can't follow", -1);
 		}
+
 	
 		JSONObject json=new JSONObject();
 		json.put("Success", "ok");

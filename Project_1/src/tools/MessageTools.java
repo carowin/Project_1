@@ -58,13 +58,11 @@ public class MessageTools {
 	 * @param id_message, l'identifiant du message
 	 */
 	public static JSONObject removeComment(String id_message) throws UnknownHostException, JSONException{
-			
+		JSONObject json = new JSONObject();
 		MongoCollection<Document> message = Database.getMongoCollection(DBStatic.collection_msg);
-		Document query = new Document();
-			
-		query.append("id_message", new ObjectId(id_message));
+		Document query = new Document();	
+		query.append("_id", new ObjectId(id_message));
 		message.deleteOne(query);
-		JSONObject json = null;
 		json.put("Success", "OK");
 		
 		return json;
@@ -89,23 +87,27 @@ public class MessageTools {
 		}else {
 			exist =false;
 		}
-		System.out.println(exist);
 		return exist;
 	}
 	
+	/**
+	 * Liste les message des id indiqués en paramètres
+	 * @param id, tableau d'id
+	 * retourne un json
+	 */
 	public static JSONObject listMessageOfIds(ArrayList<Integer> id) throws JSONException {
 		MongoCollection<Document> message = Database.getMongoCollection(DBStatic.collection_msg);
 		Document query =new Document();
-		JSONObject json = null;
+		JSONObject json = new JSONObject();
+		System.out.println("PASSE");
 		for(int i=0; i<id.size();i++) {
 			query.append("id_user", id);
 			FindIterable<Document> fi = message.find(query);
 			MongoCursor<Document> cursor = fi.iterator();
-			
-			while(cursor.next() != null) {
-				Document obj = cursor.next();
-				json.put("Message de "+id,obj.get("content"));
-				
+			System.out.println("PASSE" +i);
+			Document obj;
+			while((obj=cursor.next()) != null) {
+				json.put("Message de "+id,obj.get("content").toString());
 			}
 		}
 		return json;	

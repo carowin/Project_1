@@ -8,11 +8,11 @@ import org.json.JSONObject;
 import services.DeleteCommentS;
 
 
-public class RemoveCommentTest {
+public class DeleteCommentTest {
 
 	public static void main(String[] args) {
 		try {
-			JSONObject json = DeleteCommentS.deleteComment("27d302df-0e9a-4936-88c0-576fafdc6b54","5c75ba21baa09644e191eb57");
+			JSONObject json = DeleteCommentS.deleteComment("33343bf8-9e7c-4751-9dda-dae1522de121","5c7b0ba18df4223667f9de9a");
 			System.out.println(json.toString());
 		}catch(JSONException jex) {
 			jex.printStackTrace();

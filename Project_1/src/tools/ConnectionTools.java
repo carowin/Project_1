@@ -5,6 +5,9 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Timestamp;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.UUID;
 
 import com.mysql.jdbc.Driver;
@@ -136,7 +139,7 @@ public class ConnectionTools {
 	public static boolean insertConnection(int id, Connection c) throws SQLException {
 		String key = generateKey(c);
 		String update = "INSERT INTO session(session_key, user_id, session_root)"
-				+ " VALUES('"+ key +"',"+ id +", 1);";
+				+ " VALUES('"+ key +"',"+ id +");";
 		
 		Statement st = c.createStatement();
 		int result = st.executeUpdate(update);
@@ -176,22 +179,32 @@ public class ConnectionTools {
 		
 	}
 	
-	
-	public static boolean connectionInHour(String key, Connection c) throws SQLException {
+	/**
+	 * Retourne true et met à jour la connection si elle date d'il y a moins de une heure
+	 * Retourne false et enleve la session de la table si elle date d'il y a plus de une heure
+	 */
+	public static boolean connectionOneHour(String key, Connection c) throws SQLException {
         //session(session_key(P), user_id*, session_root, session_start)
-        String query = "Select session_start From session"
-                + "Where session_key="+key+""
-        		+ "And (TIMESTAMPDIFF(SECOND,session_start,SYSDATE())<360 );";
+		
+		String query = "SELECT * FROM session WHERE session_key='"+key+"' AND (TIMESTAMPDIFF(HOUR,session_start,NOW())<1 or session_root=1);";
 	    Statement st = c.createStatement();
 	    ResultSet r = st.executeQuery(query);
-	    String dat = "";
-	    int id;
-	    if(r.next()) {
-	    	id  = ConnectionTools.getId_withKey(key, c);
-	        return true;
+	    
+	    if(!r.next()) {
+	    	removeConnection(key,c);
+	    	st.close();
+	    	r.close();
+	    	return false;
+        }else {
+	    	st.close();
+	    	r.close();
         }
-	    removeConnection(key, c);    
-	    return false;    
+	    
+		String update = "UPDATE session SET session_start=NOW() WHERE session_key='" + key + "';";
+		st = c.createStatement();
+		int res = st.executeUpdate(update);
+	    st.close();
+	    return true;  
 	}
 
 }

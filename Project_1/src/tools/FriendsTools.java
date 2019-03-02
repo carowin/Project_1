@@ -85,7 +85,7 @@ public class FriendsTools {
 			return isFriend;
 		}
 		
-		public static ArrayList<Integer> getFriend(int id, Connection c) throws SQLException{
+		public static ArrayList<Integer> getFriends(int id, Connection c) throws SQLException{
 			String query = "SELECT * FROM follow WHERE id_user1="+ id +";";
 			Statement st = c.createStatement();
 			ResultSet result = st.executeQuery(query);

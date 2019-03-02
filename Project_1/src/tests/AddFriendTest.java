@@ -13,11 +13,7 @@ public class AddFriendTest {
 		JSONObject json = null;
 		
 		try {
-			/*json = AddFriendS.addFriend("27d302df-0e9a-4936-88c0-576fafdc6b54", 2);
-			json = AddFriendS.addFriend("27d302df-0e9a-4936-88c0-576fafdc6b54", 3);
-			json = AddFriendS.addFriend("27d302df-0e9a-4936-88c0-576fafdc6b54", 4);*/
-			
-			json = AddFriendS.addFriend("", 1);
+			json = AddFriendS.addFriend("33343bf8-9e7c-4751-9dda-dae1522de121", 1);
 		} catch (JSONException | SQLException e) {
 			e.printStackTrace();
 		}
