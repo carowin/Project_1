@@ -9,6 +9,7 @@ import java.util.GregorianCalendar;
 
 import org.bson.Document;
 import org.bson.types.ObjectId;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -99,18 +100,21 @@ public class MessageTools {
 		MongoCollection<Document> message = Database.getMongoCollection(DBStatic.collection_msg);
 		Document query =new Document();
 		JSONObject json = new JSONObject();
-		System.out.println("PASSE");
+		JSONArray msg = new JSONArray();
+
 		for(int i=0; i<id.size();i++) {
-			query.append("id_user", id);
+			query.append("id_user", id.get(i));
 			FindIterable<Document> fi = message.find(query);
 			MongoCursor<Document> cursor = fi.iterator();
-			System.out.println("PASSE" +i);
-			Document obj;
-			while((obj=cursor.next()) != null) {
-				json.put("Message de "+id,obj.get("content").toString());
+			
+			while(cursor.hasNext()) {
+				Document obj = cursor.next();
+				json.put("Message de "+id.get(i),obj.get("content"));
+				msg.put(json.toString());
 			}
 		}
-		return json;	
+		JSONObject res = new JSONObject();
+		return res.put("Liste messages", msg);	
 	}
 	
 	
