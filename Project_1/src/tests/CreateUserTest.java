@@ -19,7 +19,9 @@ public class CreateUserTest {
 			json = CreateUserS.createUser("gilbert", "tatat","gilbert@gmail.com","tata","gilbert");
 			json = CreateUserS.createUser("alphonse", "bobo","alphonse@gmail.com","bob","alphonse");
 			json = CreateUserS.createUser("henry", "iv","henry@gmail.com","iv","henry");
-			json = CreateUserS.createUser("charles", "charlie","cha@gmail.com","ly","charles");*/
+			json = CreateUserS.createUser("charles", "charlie","cha@gmail.com","ly","charles");
+			CreateUser?login=aby&password=hy&mail=aby@yahoo.com&name=hy&firstName=aby
+			CreateUser?login=aly&password=lyly&mail=aly@yahoo.com&name=ly&firstName=aly*/  
 			
 			json = CreateUserS.createUser("colin", "linlinlin","colmia@hotmail.com","mia","colin");
 			
