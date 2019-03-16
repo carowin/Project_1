@@ -19,7 +19,7 @@ public class LoginTest {
 			json = LoginS.login("alphonse", "bobo");
 			json = LoginS.login("chapelin", "hahaha");*/
 			
-			json= LoginS.login("colin", "linlinlin");
+			json= LoginS.login("caro", "caro");
 		} catch (JSONException | SQLException e) {
 			e.printStackTrace();
 		}

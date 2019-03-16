@@ -138,7 +138,7 @@ public class ConnectionTools {
 	 */
 	public static boolean insertConnection(int id, Connection c) throws SQLException {
 		String key = generateKey(c);
-		String update = "INSERT INTO session(session_key, user_id, session_root)"
+		String update = "INSERT INTO session(session_key, user_id)"
 				+ " VALUES('"+ key +"',"+ id +");";
 		
 		Statement st = c.createStatement();
