@@ -7,37 +7,33 @@
     <link rel="stylesheet" href="Enregistrement.css">
   </head>
   <body>
-    <h1> Enregistrement</h1>
+    <div class="body">
+    <h1>INSCRIPTION</h1>
 
     <form action="">
-      <div class="divNomPrenom">
-        <label for="prenom" >
-          Prenom</label><br/>
-        <input type="text" name="prenom" id="prenom" />
-      </div><!--
+        <label for="prenom" class="blockReste">Prenom</label>
+        <input type="text" name="prenom" id="prenom" /><br />
 
-      --><div class="divNomPrenom">
-        <label for="nom"> Nom</label><br/>
+        <label for="nom" class="blockReste"> Nom</label>
         <input type="text" name="nom" id="nom"/><br />
+
+        <label for="login" class="blockReste" > Login</label>
+        <input type="text" name="login" id="login"/><br />
+
+        <label for="email" class="blockReste" > Email</label>
+        <input type="text" name="email" id="email"/><br />
+
+        <label for="password" class="blockReste" > Mot de Passe</label>
+        <input type="password" name="password" id="password"/><br />
+
+        <label for="resaisi" class="blockReste" > Confirmer mot de passe</label>
+        <input type="password" name="resaisi" id="resaisi"/><br />
       </div>
       
-      <div class="divReste">
-      <label for="login" class="blockReste" > Login</label>
-      <input type="text" name="login" id="login"/><br />
-      
-      <label for="email" class="blockReste" > Email</label>
-      <input type="text" name="email" id="email"/><br />
-      
-      <label for="password" class="blockReste" > Mot de Passe</label>
-      <input type="password" name="password" id="password"/><br />
-      
-      <label for="resaisi" class="blockReste" > Rettapez</label>
-      <input type="password" name="resaisi" id="resaisi"/><br />
+      <div class="submit"><br />
+        <input type="submit" value="Annuler" />
+        <input type="submit" value="Enregistrer" />
       </div>
-      
-      <input type="submit" value="Enregistrer" /><br/>
-      
-      <input type="submit" value="Annuler" /><br/>
     </form>
 
   </body>
