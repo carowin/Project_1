@@ -1,0 +1,49 @@
+.welcome {
+  background-color: #202121;
+}
+
+.col-md-7 {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin: auto;
+
+}
+
+.col-md-7 h1, .col-md-7 h2 {
+  font-family: Impact;
+  font-size: 50px;
+  text-align: center;
+  width: 100%;
+  color: white;
+  padding: 20px;
+}
+
+.button {
+  display: inline-flex;
+  justify-content: space-between;
+  width: 500px;
+  height: 55px;
+}
+
+.button button{
+  background-color: black;
+  font-family: Verdana;
+  color: grey;
+  width: 200px;
+  text-align: center;
+  outline: none;
+  box-shadow: none;
+  border: none;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 20px;
+}
+
+.button button:hover {
+  background: #202121;
+  color: grey;
+}
+
+.col-md-5 .img{
+  width: 100%;
+}

@@ -1,0 +1,35 @@
+
+
+.two {
+  height: 100%;
+  width: 100%;
+  align-self: center;
+  background-image: url(marble.jpeg);
+}
+
+.two .center {
+  background-image: url(marbleEstompe.jpeg);
+  height: 711px;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  align-items: center;
+
+}
+
+.two .center span {
+  font-family: Helvetica, Arial, sans-serif;
+  color: #F8F8FF;
+  height: 50px;
+}
+
+.two .center .post input {
+  background-color: #F8F8FF;
+  height: 100px;
+  width: 600px;
+}
+
+.two .center .enter {
+  height: 50px;
+  text-align: center
+}
