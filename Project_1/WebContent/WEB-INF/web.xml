@@ -30,8 +30,33 @@ xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://java.sun.com/xml/n
   	<servlet-name>DeleteComment</servlet-name>
     <servlet-class>servlets.DeleteComment</servlet-class>
   </servlet>
+    <servlet>
+  	<servlet-name>ListMessage</servlet-name>
+    <servlet-class>servlets.ListMessage</servlet-class>
+  </servlet>
+  <servlet>
+  <servlet-name>ListFriend</servlet-name>
+    <servlet-class>servlets.ListFriend</servlet-class>
+  </servlet>
+  <servlet>
+  <servlet-name>FriendsId</servlet-name>
+    <servlet-class>servlets.FriendsId</servlet-class>
+  </servlet>
+  <servlet>
+  <servlet-name>GetId</servlet-name>
+    <servlet-class>servlets.GetId</servlet-class>
+  </servlet>
   
   
+  <filter>
+	<filter-name>CorsFilter</filter-name>
+	<filter-class>servlets.CORSFilter</filter-class>
+  </filter>
+  
+  <filter-mapping>
+	<filter-name>CorsFilter</filter-name>
+	<url-pattern>/*</url-pattern>
+  </filter-mapping>
   
   <servlet-mapping>
     <servlet-name>CreateUser</servlet-name>
@@ -61,9 +86,24 @@ xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://java.sun.com/xml/n
     <servlet-name>DeleteComment</servlet-name>
     <url-pattern>/Servlets/DeleteComment</url-pattern>
   </servlet-mapping>
-  
-  
-  
+  <servlet-mapping>
+  <servlet-name>ListMessage</servlet-name>
+    <url-pattern>/Servlets/ListMessage</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  <servlet-name>ListFriend</servlet-name>
+    <url-pattern>/Servlets/ListFriend</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  <servlet-name>FriendsId</servlet-name>
+    <url-pattern>/Servlets/FriendsId</url-pattern>
+  </servlet-mapping>
+    <servlet-mapping>
+  <servlet-name>GetId</servlet-name>
+    <url-pattern>/Servlets/GetId</url-pattern>
+  </servlet-mapping> 
+	
+ 
   <!-- Declaration Data Source -->
   <ressource-ref>
   	<description>DB Connexion</description>
@@ -73,5 +113,5 @@ xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://java.sun.com/xml/n
   </ressource-ref>
 	
  
-  
+ 
 </web-app>

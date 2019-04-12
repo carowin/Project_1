@@ -6,6 +6,19 @@ import java.sql.Statement;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+
+import org.bson.Document;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import com.mongodb.client.FindIterable;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoCursor;
+
+import bdConnection.DBStatic;
+import bdConnection.Database;
+
 import java.sql.Connection;
 
 public class FriendsTools {
@@ -86,14 +99,60 @@ public class FriendsTools {
 		}
 		
 		public static ArrayList<Integer> getFriends(int id, Connection c) throws SQLException{
-			String query = "SELECT * FROM follow WHERE id_user1="+ id +";";
+			String query = "SELECT * FROM follow WHERE id_user1="+ id +" OR id_user2="+id+";";
 			Statement st = c.createStatement();
 			ResultSet result = st.executeQuery(query);
 			
 			ArrayList<Integer> listFriend = new ArrayList<Integer>();
 			while(result.next()) {
-				listFriend.add(result.getInt("id_user2"));
+				if(result.getInt("id_user1") == id) {
+					listFriend.add(result.getInt("id_user2"));
+				}else {
+					listFriend.add(result.getInt("id_user1"));
+				}
 			}
+			st.close();
+			result.close();
 			return listFriend;
 		}
+		
+		
+		public static JSONObject getFriendsName(int id, Connection c) throws JSONException, SQLException {
+			JSONObject json = new JSONObject();
+			JSONArray listFriendName = new JSONArray();
+			
+			ArrayList<Integer> listFriend = getFriends(id, c);
+
+			for(Integer idFriend: listFriend) {
+				String query = "SELECT * FROM user WHERE user_id="+ idFriend +";";
+				Statement st = c.createStatement();
+				ResultSet result = st.executeQuery(query);
+				while(result.next()) {
+					json.put("name",result.getString("user_login"));
+					listFriendName.put(json.toString());
+				}
+			}
+			JSONObject res = new JSONObject();
+			return res.put("AmisName", listFriendName);	
+		}
+		
+		public static JSONObject getFriendsId(int id, Connection c) throws JSONException, SQLException {
+			JSONObject json = new JSONObject();
+			JSONArray listFriendId = new JSONArray();
+			
+			ArrayList<Integer> listFriend = getFriends(id, c);
+
+			for(Integer idFriend: listFriend) {
+				String query = "SELECT * FROM user WHERE user_id="+ idFriend +";";
+				Statement st = c.createStatement();
+				ResultSet result = st.executeQuery(query);
+				while(result.next()) {
+					json.put("id",result.getString("user_id"));
+					listFriendId.put(json.toString());
+				}
+			}
+			JSONObject res = new JSONObject();
+			return res.put("AmisId", listFriendId);	
+		}
+		
 }

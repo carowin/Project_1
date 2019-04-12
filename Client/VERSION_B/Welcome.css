@@ -19,13 +19,29 @@
   padding: 20px;
 }
 
-.button input{
+.button {
+  display: inline-flex;
+  justify-content: space-between;
+  width: 500px;
+  height: 55px;
+}
+
+.button button{
   background-color: black;
   font-family: Verdana;
   color: grey;
-  border-color: grey;
-  border-width: thin;
-  margin-top: 5px;
+  width: 200px;
+  text-align: center;
+  outline: none;
+  box-shadow: none;
+  border: none;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 20px;
+}
+
+.button button:hover {
+  background: #202121;
+  color: grey;
 }
 
 .col-md-5 .img{
