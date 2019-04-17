@@ -29,13 +29,12 @@ public class RemoveFriend extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String key = request.getParameter("key");
-		String idString = request.getParameter("id");
-		int id = Integer.parseInt(idString);
+		String loginFriend = request.getParameter("loginFriend");
 		
 	 	response.setContentType( " text / plain " );
 		PrintWriter out = response.getWriter ();
 		try {
-			JSONObject json = RemoveFriendS.removeFriend(key,id);
+			JSONObject json = RemoveFriendS.removeFriend(key,loginFriend);
 			out.println("create user sorti");
 			out.println(json.toString());
 		} catch (JSONException e) {

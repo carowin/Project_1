@@ -22,13 +22,13 @@ public class RemoveFriendS {
 	 * @param id_friend, l'id de l'ami à ajouter
 	 * @return json
 	 */
-	public static JSONObject removeFriend(String key, int id_friend) throws JSONException, SQLException{
+	public static JSONObject removeFriend(String key, String login_friend) throws JSONException, SQLException{
 		Connection connection = Database.getMySQLConnection();
 		int id_user = ConnectionTools.getId_withKey(key, connection);
 		String login_user = UserTools.getUserLogin(id_user, connection);
-		String login_friend = UserTools.getUserLogin(id_friend, connection);
+		int id_friend = UserTools.getUserId(login_friend, connection);
 		
-		if (key == null || id_friend == -1) {
+		if (key == null || login_friend == null) {
 			return ServiceTools.serviceRefused("Wrong Parameter", -1);
 		}
 		if(!ConnectionTools.connectionOneHour(key,connection)){

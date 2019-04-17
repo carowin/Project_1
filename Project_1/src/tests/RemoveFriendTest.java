@@ -15,9 +15,11 @@ public class RemoveFriendTest {
 		JSONObject json = null;
 		
 		try {
-			json = RemoveFriendS.removeFriend("27d302df-0e9a-4936-88c0-576fafdc6b54", 2);
+			/*json = RemoveFriendS.removeFriend("27d302df-0e9a-4936-88c0-576fafdc6b54", 2);
 			json = RemoveFriendS.removeFriend("27d302df-0e9a-4936-88c0-576fafdc6b54", 3);
-			json = RemoveFriendS.removeFriend("27d302df-0e9a-4936-88c0-576fafdc6b54", 4);
+			json = RemoveFriendS.removeFriend("27d302df-0e9a-4936-88c0-576fafdc6b54", 4);*/
+			
+			json = RemoveFriendS.removeFriend("9f5a7a86-00d0-4ba5-8266-632acc721161", "azerty");
 			
 		} catch (JSONException | SQLException e) {
 			e.printStackTrace();

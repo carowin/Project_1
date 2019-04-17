@@ -3,6 +3,7 @@ package tools;
 import java.awt.List;
 import java.net.UnknownHostException;
 import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -15,8 +16,11 @@ import org.json.JSONObject;
 
 import com.mongodb.DBCursor;
 import com.mongodb.client.FindIterable;
+import com.mongodb.client.MongoClient;
+import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
+import com.mongodb.client.MongoDatabase;
 
 import bdConnection.DBStatic;
 import bdConnection.Database;
@@ -97,24 +101,89 @@ public class MessageTools {
 	 * retourne un json
 	 */
 	public static JSONObject listMessageOfIds(ArrayList<Integer> id) throws JSONException {
-		MongoCollection<Document> message = Database.getMongoCollection(DBStatic.collection_msg);
+		MongoClient mongo = MongoClients.create("mongodb://" + DBStatic.mongo_host + ":" + DBStatic.mongo_port);
+		MongoDatabase db =  mongo.getDatabase(DBStatic.mongo_bd);
+		MongoCollection<Document> message = db.getCollection(DBStatic.collection_msg);
+		//MongoCollection<Document> message = Database.getMongoCollection(DBStatic.collection_msg);
 		Document query =new Document();
-		JSONObject json = new JSONObject();
-		JSONArray msg = new JSONArray();
+		
+		//JSONArray msg = new JSONArray();
+		ArrayList <JSONObject> msg = new ArrayList<JSONObject>();
+		MongoCursor<Document> cursor = null;
 
 		for(int i=0; i<id.size();i++) {
 			query.append("id_user", id.get(i));
 			FindIterable<Document> fi = message.find(query);
-			MongoCursor<Document> cursor = fi.iterator();
+			cursor = fi.iterator();
 			
 			while(cursor.hasNext()) {
+				JSONObject json = new JSONObject();
 				Document obj = cursor.next();
-				json.put("Message de "+id.get(i),obj.get("content"));
-				msg.put(json.toString());
+				json.put("id_user",obj.get("id_user"));
+				json.put("login",obj.get("login"));
+				json.put("text",obj.get("content"));
+				msg.add(json);
 			}
 		}
+		
+		if(cursor!=null) {
+			cursor.close();
+		}
 		JSONObject res = new JSONObject();
-		return res.put("Liste messages", msg);	
+		mongo.close();
+
+		return res.put("Messages", msg);	
+	}
+	
+	public static JSONObject sendPrivateMessage(String me, String friendId, String myMessage) throws JSONException {
+		GregorianCalendar calendar = new java.util.GregorianCalendar();
+		Date d = calendar.getTime();
+		
+		MongoCollection<Document> message = Database.getMongoCollection(DBStatic.collection_privateMessage);
+		Document query = new Document();
+		JSONObject json = new JSONObject();
+		
+		query.append("send", me);
+		query.append("receive", friendId);
+		query.append("date", d);
+		query.append("content", myMessage);
+		
+		message.insertOne(query);
+		
+		json.put("Success", "OK");
+		
+		return json;
+	}
+	
+	
+	public static JSONObject getAllPrivateMessage(String me) throws JSONException {
+		MongoClient mongo = MongoClients.create("mongodb://" + DBStatic.mongo_host + ":" + DBStatic.mongo_port);
+		MongoDatabase db =  mongo.getDatabase(DBStatic.mongo_bd);
+		MongoCollection<Document> message = db.getCollection(DBStatic.collection_privateMessage);
+		Document query =new Document();
+		ArrayList <JSONObject> msg = new ArrayList<JSONObject>();
+		
+		query.append("myfriend", me);
+		FindIterable<Document> fi = message.find(query);
+		MongoCursor<Document> cursor = fi.iterator();
+		
+		while(cursor.hasNext()) {
+			JSONObject json = new JSONObject();
+			Document obj = cursor.next();
+			json.put("send",obj.get("send"));
+			json.put("receive",obj.get("receive"));
+			json.put("msg",obj.get("content"));
+			msg.add(json);
+		}
+		
+		if(cursor!=null) {
+			cursor.close();
+		}
+		JSONObject res = new JSONObject();
+		mongo.close();
+
+		return res.put("Messages", msg);
+			
 	}
 	
 	
