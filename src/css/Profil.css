@@ -1,0 +1,112 @@
+.two {
+  height: 100%;
+  width: 100%;
+  align-self: center;
+  background-image: url(marble.jpeg)
+}
+
+.two .center {
+  background-image: url(marbleEstompe.jpeg);
+  height: 711px;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  align-items: center;
+
+}
+
+.two .info{
+  width: 600px;
+  display: inline-flex;
+}
+
+.two .info .img {
+  height : 150px;
+}
+
+.two .myInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 385px;
+}
+
+.two .myInfo h1{
+  height: 100px;
+  width: 400px;
+  text-align: center;
+  padding-top: 10px;
+  color: black;
+  font-family: Impact, Arial, sans-serif;
+  font-size: 70px;
+  border: none;
+
+}
+
+.two .myInfo input[type="button"]{
+  width: 150px;
+  height: 30px;
+  background-color: #202121;
+  color: grey;
+  font-family: Helvetica, Arial, sans-serif;
+  box-shadow: none;
+  border: none;
+}
+
+.two .myInfo input[type="button"]:hover
+{
+  background-color: black;
+}
+
+.two .post {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.two .post input{
+  width: 600px;
+  height: 60px;
+  background-color: whitesmoke;
+}
+
+.two .post input[type="text"] {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 15px;
+  font-style: italic;
+  box-shadow: none;
+  border: none;
+}
+
+.two .post input[type="submit"] {
+  text-align: center;
+  height: 25px;
+  box-shadow: none;
+  border: none;
+  border-top-color: black;
+  background-color: grey;
+}
+
+.two .myPosts {
+  width: 600px;
+  height: 60px;
+}
+
+.two .myPosts p {
+  background-color: whitesmoke;
+  margin-bottom: 1px;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 15px;
+  font-weight: bolder;
+}
+
+.two .myPosts input[type="text"] {
+  width: 600px;
+  height: 60px;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 15px;
+  box-shadow: none;
+  border: none;
+  background-color: whitesmoke;
+}

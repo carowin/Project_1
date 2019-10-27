@@ -1,0 +1,53 @@
+
+
+.two {
+  height: 100%;
+  width: 100%;
+  align-self: center;
+  background-image: url(marble.jpeg);
+}
+
+.two .center {
+  background-image: url(marbleEstompe.jpeg);
+  height: 711px;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  align-items: center;
+
+}
+
+.two .center span {
+  font-family: Helvetica, Arial, sans-serif;
+  color: #F8F8FF;
+  height: 50px;
+}
+
+.two .center .myPosts span {
+  background-color: #F8F8FF;
+  color: #202121;
+  height: 300px;
+  width: auto;
+}
+
+.two .center .enter {
+  height: 50px;
+  text-align: center
+}
+
+.two .center .myPosts .onePost {
+  background-color: #F8F8FF;
+  height: 100px;
+  width: 600px;
+  margin: 20px;
+}
+
+.two .center .myPosts .onePost p {
+  color :black;
+  border-bottom: 1px solid #202121;
+  border-top: 1px solid #202121;
+}
+
+.two .center .myPosts .onePost span {
+  color :black;
+}

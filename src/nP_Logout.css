@@ -1,0 +1,92 @@
+.one {
+  width: 100%;
+  height: 50px;
+  margin: auto;
+  background-color: #202121;
+}
+
+.one .logo {
+  margin:0;
+  padding:0;
+  height: 50px;
+}
+
+.one .logo  input[value] {
+  font-family: Impact;
+  background-color: #202121;
+  color: white;
+  font-size: 35px;
+  margin: auto;
+  width: auto;
+  border: none;
+  height: 50px;
+}
+
+.one .search {
+  display: inline-flex;
+  width: auto;
+
+}
+
+.one .search button{
+}
+
+.one .search img{
+  height: 50px;
+
+}
+
+.one .discover button {
+  background-color: black;
+  border: none;
+  border-bottom-color: black;
+  height: 0px;
+}
+
+.one .discover img {
+  height: 50px;
+  width: auto;
+
+}
+
+.one .profil input[value] {
+  height: 50px;
+  width:auto;
+  color: white;
+  background-color: #202121;
+}
+.one .profil input[value] {
+  font-size: 20px;
+  border: none;
+}
+
+.one .profil input[value]:hover {
+  background: black;
+}
+
+.one .logout input[value] {
+  font-size: 20px;
+  height: 50px;
+  width:auto;
+  color: white;
+  background-color: #202121;
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+.one .logout input[value]:hover {
+  background: black;
+}
+
+.one .logout {
+}
+
+.one .search {
+  display : inline-flex;
+  height: 50px;
+}
+
+.one .search input {
+  width: 300px;
+}

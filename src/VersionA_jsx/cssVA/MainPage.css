@@ -1,0 +1,114 @@
+.body{
+  background-image: url(marble.jpeg); 
+}
+.one {
+  width: 100%;
+  height: 50px;
+  margin: auto;
+  background-color: #202121;
+}
+
+.one .logo {
+  margin:0;
+  padding:0;
+}
+
+.one .logo  input[value] {
+  font-family: Impact;
+  background-color: #202121;
+  color: white;
+  font-size: 35px;
+  margin: auto;
+  width: auto;
+  border: none;
+}
+
+.one .search {
+  display: inline-flex;
+  width: auto;
+  
+}
+
+.one .search button{
+}
+
+.one .search img{
+  height: 50px;
+  
+}
+
+.one .profil input[value] {
+  height: 50px;
+  width:auto;
+  color: white;
+  background-color: #202121; 
+}
+.one .profil input[value] {
+  font-size: 20px;
+  border: none;
+}
+
+.one .profil input[value]:hover {
+  background: black;
+}
+
+.one .logout input[value] {
+  font-size: 20px;
+  height: 50px;
+  width:auto;
+  color: white;
+  background-color: #202121;
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+.one .logout input[value]:hover {
+  background: black;
+}
+
+.one .logout {
+}
+
+.one .search {
+  display : inline-flex;
+}
+
+.one .search input {
+  width: 300px;
+}
+
+
+.two {
+  height: 100%;
+  width: 100%;
+  align-self: center;
+}
+
+.two .center {
+  background-image: url(marbleEstompe%CC%81.jpeg);
+  height: 711px;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  align-items: center;
+  
+}
+
+.two .center span {
+  font-family: Helvetica, Arial, sans-serif;
+  color: #F8F8FF;
+  height: 50px;
+}
+
+.two .center .post input {
+  background-color: #F8F8FF;
+  height: 100px;
+  width: 600px;
+}
+
+.two .center .enter {
+  height: 50px;
+  text-align: center
+}
+

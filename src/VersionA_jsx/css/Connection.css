@@ -1,0 +1,65 @@
+/* Fonts from Google Fonts - more at https://fonts.google.com */
+
+body {
+  padding: 5px 25px;
+  font-size: 25px;
+  margin: 0;
+  color: black;
+  text-align: center;
+  margin-top: 50vh;
+  transform: translateY(-50%);
+  background-image:url(Ocean.jpg);
+  background-size: cover;
+  background-position:center;
+}
+
+h1 {
+  font-family: Impact, fantasy;
+  font-size: 50px;
+}
+
+.blocksaisi {
+  display: inline-block;
+  font-family: Arial Narrow, sans-serif;
+  font-weight: bold;
+  font-size: 22px;
+  width: 170px;
+  height: 55px;
+}
+
+.Saisi input{
+  width: 160px;
+  height: 25px;
+  border-radius:10px;
+}
+
+.Submit {
+  height: 30px;
+}
+
+.Submit input{
+  font-family: Arial Narrow, sans-serif;
+  font-weight: bold;
+  font-size: 18px;
+  border:none;
+  width: 50px;
+  height: 25px;
+  border-radius:5px;
+  background-color:black;
+  color:#fff;
+}
+
+.a {
+  display: inline-block;
+  width: 170px;
+  height: 55px;
+}
+
+a {
+  font-family: Arial Narrow, sans-serif;
+  font-size: 15px;
+  color: black;  
+  font-style: italic;
+  font-weight: bold;
+}
+

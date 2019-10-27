@@ -1,0 +1,1 @@
+class ContentPanel extends Component {

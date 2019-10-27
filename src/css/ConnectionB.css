@@ -1,0 +1,73 @@
+.row {
+  background-color: #202121;
+}
+
+.col-md-7 {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin: auto;
+
+}
+
+.col-md-7 h1 {
+  font-family: Impact;
+  font-size: 50px;
+  text-align: center;
+  width: 100%;
+  color: white;
+  padding: 20px;
+}
+
+.form{
+
+}
+
+.col-md-7 .form .login,
+.col-md-7 .form .pwd {
+  background-color: #202121;
+  font-family: Verdana;
+  text-align: center;
+  outline: none;
+  box-shadow: none;
+  border: none;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 20px;
+}
+
+.col-md-7 .form .login[type],
+.col-md-7 .form .pwd[type] {
+  color: grey;
+  font-family: Verdana;
+}
+
+.col-md-7 .submit {
+  text-align: center;
+}
+
+.col-md-7 .submit .enter {
+  background: black;
+  font-family: Verdana;
+  color: grey;
+  width: 100%;
+  border-color: grey;
+  border-width: thin;
+  margin-top: 5px;
+
+}
+
+.col-md-7 .link {
+  width: 100%;
+  display: inline-flex;
+  justify-content: space-between;
+}
+
+.col-md-7 .link a {
+  font-family: Verdana;
+  color:coral;
+  font-size: 10px;
+}
+
+.col-md-5 .img{
+  width: 100%;
+}

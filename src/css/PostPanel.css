@@ -1,0 +1,29 @@
+.two .post {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.two .post input{
+  width: 600px;
+  height: 60px;
+  background-color: whitesmoke;
+}
+
+.two .post input[type="text"] {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 15px;
+  font-style: italic;
+  box-shadow: none;
+  border: none;
+}
+
+.two .post input[type="submit"] {
+  text-align: center;
+  height: 25px;
+  box-shadow: none;
+  border: none;
+  border-top-color: black;
+  background-color: grey;
+}

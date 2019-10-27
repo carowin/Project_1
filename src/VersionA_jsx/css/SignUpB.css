@@ -1,0 +1,65 @@
+.row {
+  background-color: #202121;
+}
+
+.col-md-7 {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin: auto;
+}
+
+.form{
+  width: 50%;
+}
+.col-md-7 h1 {
+  font-family: Impact;
+  font-size: 50px;
+  text-align: center;
+  width: 100%;
+  color: white;
+  padding: 20px;
+}
+
+.col-md-7 .form input{
+  background-color: #202121;
+  font-family: Verdana;
+  text-align: center;
+  outline: none;
+  box-shadow: none;
+  border: none;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.col-md-7 .form input[type]{
+  color: grey;
+  font-family: Verdana;
+}
+
+.col-md-7 .submit {
+  width: 100%;
+  display: inline-flex;
+  justify-content: space-between;
+}
+
+.col-md-7 .submit input {
+  background-color: black;
+  font-family: Verdana;
+  color: grey;
+  border-color: grey;
+  border-width: thin;
+  margin-top: 5px;
+}
+
+.col-md-7 .submit input[type="submit"]:hover {
+  background: #202121;
+  color: grey;
+}
+
+
+
+.col-md-5 .img{
+  width: 100%;
+}

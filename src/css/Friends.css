@@ -1,0 +1,44 @@
+
+.two .center .myFriends {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto
+}
+
+.two .center .myFriends .friend {
+  display: inline-flex;
+  background-color: whitesmoke;
+  height: 60px;
+  width: 60%;
+  margin: 15px;
+}
+
+.two .center .myFriends .friend span {
+  font-family: Impact;
+  font-size: 35px;
+  width: 500px;
+  text-align: center;
+  color: #202121;
+}
+
+.two .center .myFriends .friend input{
+
+  background-color: #202121;
+  color: grey;
+
+
+}
+
+.two .center .myFriends .friend .seeMe{
+}
+
+
+.two .center .myFriends .friend .x{
+  width:50px;
+  color: #900000;
+}
+
+.two .center .myFriends .friend .addme{
+  width:100px;
+  color: #900000;
+}
